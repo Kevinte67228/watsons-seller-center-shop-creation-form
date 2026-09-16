@@ -1,0 +1,4121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>屈臣氏 Seller Center｜廠商建立表單（WTCTW）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Watsons Brand Palette */
+      --brand-primary: #009aa6;
+      --brand-primary-dark: #007c85;
+      --brand-primary-deep: #053b38;
+      --brand-primary-light: #e0f6f5;
+      --brand-primary-subtle: #f0fbfb;
+      
+      /* Neutrals & Surfaces */
+      --bg-canvas: #f4f8f8;
+      --bg-card: #ffffff;
+      --bg-card-muted: #f8fafc;
+      --border-subtle: #e2e8f0;
+      --border-focus: #009aa6;
+      
+      /* Text Colors */
+      --text-heading: #0f172a;
+      --text-body: #334155;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      
+      /* Semantic Accents */
+      --success: #059669;
+      --success-bg: #ecfdf5;
+      --success-border: #a7f3d0;
+      --warning: #d97706;
+      --warning-bg: #fffbeb;
+      --warning-border: #fde68a;
+      --danger: #e11d48;
+      --danger-bg: #fff1f2;
+      --danger-border: #fecdd3;
+      --info: #0284c7;
+      --info-bg: #f0f9ff;
+      --info-border: #bae6fd;
+      
+      /* Elevations & Radii */
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --radius-full: 9999px;
+      
+      --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+      --shadow-md: 0 8px 24px -4px rgba(5, 59, 56, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+      --shadow-lg: 0 16px 36px -6px rgba(5, 59, 56, 0.1), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+      --shadow-float: 0 20px 40px -10px rgba(0, 154, 166, 0.2);
+      
+      --transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      max-width: 100vw;
+      overflow-x: clip;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 110px;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-body);
+      background-color: var(--bg-canvas);
+      background-image: radial-gradient(at 0% 0%, rgba(0, 154, 166, 0.06) 0px, transparent 50%),
+                        radial-gradient(at 100% 0%, rgba(224, 246, 245, 0.6) 0px, transparent 50%);
+      background-attachment: fixed;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* TOPBAR & STEP TRACKER */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .topbar-content {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .topbar-header-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      min-width: 0;
+    }
+
+    .brand-logo-wrap {
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      height: 32px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-divider {
+      width: 1px;
+      height: 24px;
+      background: var(--border-subtle);
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .brand-portal {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--brand-primary-deep);
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .brand-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--brand-primary-dark);
+      background: var(--brand-primary-light);
+      padding: 1px 6px;
+      border-radius: var(--radius-full);
+    }
+
+    .brand-subtitle {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .topbar-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .btn-text-full { display: inline; }
+    .btn-text-short { display: none; }
+
+    .save-status-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--brand-primary-dark);
+      background: var(--brand-primary-light);
+      padding: 5px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(0, 154, 166, 0.2);
+      white-space: nowrap;
+      transition: all 0.3s ease;
+    }
+
+    .save-status-badge.saved-flash {
+      background: #ecfdf5;
+      color: #059669;
+      border-color: #a7f3d0;
+      box-shadow: 0 0 8px rgba(5, 150, 105, 0.2);
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--brand-primary);
+      position: relative;
+    }
+
+    .pulse-dot::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: var(--brand-primary);
+      opacity: 0.4;
+      animation: pulseAnim 2s infinite ease-out;
+    }
+
+    @keyframes pulseAnim {
+      0% { transform: scale(0.8); opacity: 0.8; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    /* Sub-nav Step Bar */
+    .step-nav-bar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .step-nav-container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .step-nav-container::-webkit-scrollbar { display: none; }
+
+    .step-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-bottom: 2.5px solid transparent;
+      transition: var(--transition-base);
+      white-space: nowrap;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .step-nav-item:hover {
+      color: var(--brand-primary);
+      background: var(--brand-primary-subtle);
+    }
+
+    .step-nav-item.active {
+      color: var(--brand-primary-dark);
+      border-bottom-color: var(--brand-primary);
+      font-weight: 700;
+    }
+
+    .step-nav-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: var(--text-body);
+      font-size: 11px;
+      font-weight: 700;
+      transition: var(--transition-base);
+    }
+
+    .step-nav-item.active .step-nav-num {
+      background: var(--brand-primary);
+      color: #ffffff;
+    }
+
+    .step-nav-item.completed .step-nav-num {
+      background: var(--success);
+      color: #ffffff;
+    }
+
+    .step-nav-item.completed .step-nav-num .num-text {
+      display: none;
+    }
+
+    .step-nav-item.completed .step-nav-num::after {
+      content: "✓";
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* MAIN LAYOUT & GRID */
+    .app-container {
+      max-width: 1360px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px 20px 80px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.95fr);
+      gap: 24px;
+      align-items: start;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .forms-column, .dashboard-sidebar, .form-card, .summary-card, .summary-card-body {
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Banner Notice */
+    .hero-notice {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #053b38 0%, #007c85 100%);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-notice::before {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+      pointer-events: none;
+    }
+
+    .hero-text h2 {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-text p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.5;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .hero-badge-pill {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    /* Forms Column */
+    .forms-column {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-width: 0;
+      width: 100%;
+    }
+
+    /* Cards */
+    .form-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-base);
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .form-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-header-bar {
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .card-header-bar.f001 {
+      background: linear-gradient(90deg, #f0fbfb 0%, #ffffff 100%);
+      border-left: 4px solid var(--brand-primary);
+    }
+
+    .card-header-bar.f002 {
+      background: linear-gradient(90deg, #f0f9ff 0%, #ffffff 100%);
+      border-left: 4px solid var(--info);
+    }
+
+    .card-header-bar.f003 {
+      background: linear-gradient(90deg, #f5f3ff 0%, #ffffff 100%);
+      border-left: 4px solid #7c3aed;
+    }
+
+    .card-title-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .card-icon-box {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .f001 .card-icon-box { background: var(--brand-primary-light); color: var(--brand-primary-dark); }
+    .f002 .card-icon-box { background: var(--info-bg); color: var(--info); }
+    .f003 .card-icon-box { background: #ede9fe; color: #7c3aed; }
+
+    .card-title-text h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-heading);
+      letter-spacing: -0.01em;
+      margin-bottom: 2px;
+    }
+
+    .card-title-text span {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+      display: block;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    /* Section Sub-containers */
+    .form-group-section {
+      background: var(--bg-card-muted);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .form-group-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .group-section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .group-section-title h4 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--brand-primary-deep);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      background: var(--brand-primary-light);
+      color: var(--brand-primary-dark);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    /* Form Fields & Grid */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px 16px;
+    }
+
+    .col-span-2 {
+      grid-column: 1 / -1;
+    }
+
+    .field-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-width: 0;
+    }
+
+    .field-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .field-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-heading);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .field-req {
+      color: var(--danger);
+      font-weight: 800;
+    }
+
+    .field-opt {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+      background: #e2e8f0;
+      padding: 1px 6px;
+      border-radius: var(--radius-full);
+    }
+
+    .field-key {
+      font-size: 10.5px;
+      color: var(--text-light);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 500;
+    }
+
+    /* Input Elements */
+    .input-control {
+      width: 100%;
+      font-family: inherit;
+      font-size: 13.5px;
+      color: var(--text-heading);
+      background: #ffffff;
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 9px 12px;
+      outline: none;
+      transition: var(--transition-base);
+    }
+
+    .input-control::placeholder {
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .input-control:hover:not(:disabled):not([readonly]) {
+      border-color: #cbd5e1;
+    }
+
+    .input-control:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(0, 154, 166, 0.15);
+      background: #ffffff;
+    }
+
+    .input-control[readonly],
+    .input-control:disabled {
+      background: #e2e8f0;
+      color: #334155;
+      cursor: not-allowed;
+      border-color: #cbd5e1;
+      font-weight: 600;
+    }
+
+    .input-control[readonly]::placeholder,
+    .input-control:disabled::placeholder {
+      color: #64748b;
+      font-weight: 400;
+    }
+
+    .field-readonly-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: #334155;
+      background: #cbd5e1;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    textarea.input-control {
+      min-height: 85px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    select.input-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+
+    /* Prefix & Suffix Controls */
+    .input-addon-wrap {
+      display: flex;
+      align-items: stretch;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .input-addon-wrap .input-control {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .input-addon-prefix {
+      background: #f1f5f9;
+      border: 1.5px solid var(--border-subtle);
+      border-right: none;
+      border-top-left-radius: var(--radius-sm);
+      border-bottom-left-radius: var(--radius-sm);
+      padding: 9px 12px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .input-addon-suffix {
+      background: #f1f5f9;
+      border: 1.5px solid var(--border-subtle);
+      border-left: none;
+      border-top-right-radius: var(--radius-sm);
+      border-bottom-right-radius: var(--radius-sm);
+      padding: 9px 12px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .input-addon-wrap:has(.input-addon-suffix) .input-control {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    /* Helper, Counter & Error */
+    .field-footer {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .field-hint {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .char-counter {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-light);
+      background: #f1f5f9;
+      padding: 1px 6px;
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .char-counter.is-limit {
+      color: var(--danger);
+      background: var(--danger-bg);
+    }
+
+    .field-error-msg {
+      display: none;
+      color: var(--danger);
+      font-size: 12px;
+      font-weight: 600;
+      align-items: center;
+      gap: 4px;
+      margin-top: 2px;
+    }
+
+    .field-wrapper.has-error .input-control {
+      border-color: var(--danger);
+      background-color: var(--danger-bg);
+    }
+
+    .field-wrapper.has-error .field-error-msg {
+      display: flex;
+    }
+
+    /* URL Code Visualizer Box */
+    .url-code-preview-box {
+      margin-top: 8px;
+      background: #f0fbfb;
+      border: 1px dashed rgba(0, 154, 166, 0.4);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .url-code-preview-text {
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 12px;
+      color: var(--brand-primary-deep);
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    .url-code-copy-btn {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      color: var(--brand-primary-dark);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: var(--transition-base);
+    }
+
+    .url-code-copy-btn:hover {
+      background: var(--brand-primary-light);
+      border-color: var(--brand-primary);
+    }
+
+    /* Zip6 Auto badge */
+    .zip-auto-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--success);
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
+      padding: 2px 6px;
+      border-radius: var(--radius-full);
+      margin-left: 6px;
+    }
+
+    /* Interactive Sample Figure Preview */
+    .sample-preview-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-top: 6px;
+      transition: var(--transition-base);
+    }
+
+    .sample-preview-card:hover {
+      border-color: var(--brand-primary);
+    }
+
+    .sample-preview-header {
+      padding: 10px 14px;
+      background: var(--bg-card-muted);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      gap: 8px;
+    }
+
+    .sample-preview-header span {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--brand-primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sample-preview-body {
+      padding: 12px;
+      text-align: center;
+    }
+
+    .sample-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      cursor: zoom-in;
+    }
+
+    .sample-caption {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      line-height: 1.4;
+      text-align: left;
+    }
+
+    /* Buttons & Actions */
+    .btn-group-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: var(--transition-base);
+      text-decoration: none;
+      line-height: 1;
+      white-space: nowrap;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary-brand {
+      background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-dark) 100%);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 154, 166, 0.25);
+    }
+
+    .btn-secondary-white {
+      background: #ffffff;
+      border-color: var(--border-subtle);
+      color: var(--text-heading);
+    }
+
+    .btn-danger-light {
+      background: var(--danger-bg);
+      border-color: var(--danger-border);
+      color: var(--danger);
+    }
+
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* RIGHT SIDEBAR */
+    .dashboard-sidebar {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 100px;
+      align-self: start;
+      max-height: calc(100vh - 115px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      box-sizing: border-box;
+      padding-right: 4px;
+      padding-bottom: 24px;
+      scrollbar-width: thin;
+      scrollbar-color: #cbd5e1 transparent;
+    }
+
+    .dashboard-sidebar::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .dashboard-sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    .summary-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      flex-shrink: 0;
+      flex-grow: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .summary-card-header {
+      padding: 14px 18px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .summary-card-header h3 {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--text-heading);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .summary-card-body {
+      padding: 16px 18px;
+      box-sizing: border-box;
+    }
+
+    /* Progress Track */
+    .progress-overview-box {
+      margin-bottom: 14px;
+    }
+
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 6px;
+    }
+
+    .progress-track {
+      height: 9px;
+      background: #e2e8f0;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--brand-primary) 0%, var(--success) 100%);
+      border-radius: var(--radius-full);
+      transition: width 0.3s ease;
+    }
+
+    .status-check-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .status-check-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-card-muted);
+      border: 1px solid var(--border-subtle);
+      font-size: 12.5px;
+      font-weight: 600;
+    }
+
+    .status-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .status-tag.is-ready {
+      background: var(--success-bg);
+      color: var(--success);
+      border: 1px solid var(--success-border);
+    }
+
+    .status-tag.is-pending {
+      background: var(--warning-bg);
+      color: var(--warning);
+      border: 1px solid var(--warning-border);
+    }
+
+    .form-status-notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 11px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 12.5px;
+      line-height: 1.5;
+      margin-bottom: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .form-status-notice.is-success {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #065f46;
+    }
+
+    .form-status-notice.is-editing {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+    }
+
+    /* Tables & Responsive Cards */
+    .data-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      background: #ffffff;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .modern-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      text-align: left;
+    }
+
+    .modern-table th {
+      background: #f8fafc;
+      color: var(--text-muted);
+      font-weight: 700;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border-subtle);
+      white-space: nowrap;
+    }
+
+    .modern-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #f1f5f9;
+      color: var(--text-body);
+      vertical-align: middle;
+    }
+
+    /* Responsive Account List & Shop Summary Cards */
+    .shop-summary-box {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .summary-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      background: var(--bg-card-muted);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .summary-meta-row .summary-label {
+      color: var(--text-muted);
+      font-size: 11.5px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .summary-meta-row .summary-val {
+      color: var(--text-heading);
+      font-size: 12px;
+      font-weight: 700;
+      word-break: break-all;
+      text-align: right;
+    }
+
+    .account-cards-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .account-item-card {
+      background: var(--bg-card-muted);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: var(--transition-base);
+      min-width: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .account-item-card:hover {
+      border-color: #cbd5e1;
+      background: #ffffff;
+    }
+
+    .account-item-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+      min-width: 0;
+    }
+
+    .account-item-identity {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+      flex-wrap: wrap;
+    }
+
+    .account-item-num {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: #e2e8f0;
+      padding: 1px 6px;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+    }
+
+    .account-item-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-heading);
+      white-space: nowrap;
+    }
+
+    .account-item-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+
+    .account-item-email {
+      font-size: 12px;
+      color: var(--brand-primary-dark);
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    .account-item-phone {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: ui-monospace, monospace;
+    }
+
+    .table-empty-state {
+      padding: 20px 14px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+      background: #fafbfc;
+      border: 1px dashed var(--border-subtle);
+      border-radius: var(--radius-sm);
+      min-width: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Final Export Box */
+    .export-box-gradient {
+      background: linear-gradient(135deg, #053b38 0%, #005d64 100%);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+      width: 100%;
+      flex-shrink: 0;
+      flex-grow: 0;
+      box-sizing: border-box;
+    }
+
+    .export-box-gradient h3 {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .export-box-gradient p {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.88);
+      line-height: 1.45;
+      margin-bottom: 14px;
+    }
+
+    .mail-recipient-chip {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 11.5px;
+      color: #ffffff;
+      margin-bottom: 14px;
+      gap: 8px;
+    }
+
+    .export-channel-title {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 8px;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .export-channel-title:first-of-type {
+      margin-top: 0;
+    }
+
+    .btn-export-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .btn-share-mobile {
+      background: linear-gradient(135deg, #00e0d0 0%, #009aa6 100%);
+      color: #053b38;
+      font-weight: 800;
+      border: none;
+      box-shadow: 0 4px 14px rgba(0, 224, 208, 0.35);
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 14px;
+    }
+
+    .btn-export-mailto {
+      background: #ffffff;
+      color: var(--brand-primary-deep);
+      font-weight: 800;
+      width: 100%;
+      padding: 11px 16px;
+    }
+
+    .btn-export-csv {
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      width: 100%;
+    }
+
+    .btn-export-eml {
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+      border: 1px dashed rgba(255, 255, 255, 0.25);
+      font-size: 12.5px;
+      width: 100%;
+    }
+
+    .btn-copy-summary {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 12.5px;
+      width: 100%;
+    }
+
+    /* Footer */
+    .app-footer {
+      max-width: 1360px;
+      margin: 0 auto 30px;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    .footer-privacy-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Toast Notification System */
+    .toast-container {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      pointer-events: none;
+    }
+
+    .toast-msg {
+      pointer-events: auto;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-20px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast-msg.success { background: #065f46; border: 1px solid #10b981; }
+    .toast-msg.warning { background: #92400e; border: 1px solid #f59e0b; }
+    .toast-msg.error { background: #9f1239; border: 1px solid #f43f5e; }
+
+    /* Modal / Lightbox */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-dialog {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      transform: scale(0.95);
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .modal-backdrop.open .modal-dialog {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .modal-header h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-heading);
+    }
+
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      font-size: 22px;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+    }
+
+    .modal-body {
+      padding: 18px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Mobile Responsive Overrides */
+    @media (max-width: 900px) {
+      .app-container {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 14px 14px 60px;
+        gap: 18px;
+        width: 100%;
+        min-width: 0;
+      }
+      .dashboard-sidebar {
+        position: static;
+        width: 100%;
+        min-width: 0;
+      }
+      .forms-column {
+        width: 100%;
+        min-width: 0;
+      }
+      html {
+        scroll-padding-top: 95px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .topbar-content {
+        padding: 8px 12px 6px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 7px;
+      }
+
+      .topbar-header-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 8px;
+      }
+
+      .brand-group {
+        gap: 8px;
+      }
+
+      .brand-logo-wrap {
+        padding: 2px 6px;
+      }
+
+      .brand-logo {
+        height: 24px;
+      }
+
+      .brand-divider {
+        height: 18px;
+      }
+
+      .brand-portal {
+        font-size: 14.5px;
+        gap: 5px;
+      }
+
+      .brand-tag {
+        font-size: 9.5px;
+        padding: 1px 5px;
+      }
+
+      .brand-subtitle {
+        display: none;
+      }
+
+      .save-status-badge {
+        padding: 4px 8px;
+        font-size: 11px;
+        font-weight: 600;
+        gap: 5px;
+        flex-shrink: 0;
+      }
+
+      .save-status-badge span {
+        display: inline-block;
+        font-size: 11px;
+      }
+
+      .topbar-actions {
+        display: grid;
+        grid-template-columns: 1.35fr 1fr 1fr 0.95fr;
+        gap: 5px;
+        width: 100%;
+      }
+
+      .topbar-actions .topbar-btn {
+        width: 100% !important;
+        padding: 6px 2px !important;
+        font-size: 11.5px !important;
+        min-height: 33px;
+        gap: 3px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius-sm);
+        white-space: nowrap;
+      }
+
+      .topbar-actions .btn-primary-brand {
+        font-weight: 800;
+      }
+
+      .btn-text-full { display: none; }
+      .btn-text-short { display: inline; }
+
+      .step-nav-container {
+        padding: 0 8px;
+        gap: 2px;
+      }
+      .step-nav-item {
+        padding: 8px 10px;
+        font-size: 12px;
+        gap: 6px;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .col-span-2 {
+        grid-column: 1;
+      }
+      .card-body {
+        padding: 14px 12px;
+      }
+      .form-group-section {
+        padding: 12px 10px;
+        margin-bottom: 12px;
+      }
+      
+      /* Stack URL Prefix on small screens to prevent layout blow-up */
+      .input-addon-wrap {
+        flex-direction: column;
+      }
+      .input-addon-prefix {
+        border-right: 1.5px solid var(--border-subtle);
+        border-bottom: none;
+        border-top-left-radius: var(--radius-sm);
+        border-top-right-radius: var(--radius-sm);
+        border-bottom-left-radius: 0;
+        font-size: 11px;
+        padding: 6px 10px;
+        white-space: normal;
+        word-break: break-all;
+      }
+      .input-addon-wrap .input-control {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: var(--radius-sm);
+        border-bottom-right-radius: var(--radius-sm);
+      }
+      .btn-group-actions {
+        flex-direction: column;
+      }
+      .btn-group-actions .btn {
+        width: 100%;
+      }
+      html {
+        scroll-padding-top: 135px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .brand-portal {
+        font-size: 13.5px;
+      }
+      .topbar-actions {
+        grid-template-columns: 1.25fr 1fr 1fr 0.9fr;
+        gap: 4px;
+      }
+      .topbar-actions .topbar-btn {
+        font-size: 10.5px !important;
+        padding: 5px 1px !important;
+      }
+      .topbar-actions .topbar-btn span:first-child {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-content">
+      <div class="topbar-header-row">
+        <a href="#" class="brand-group">
+          <div class="brand-logo-wrap">
+            <img class="brand-logo" src="watsons-logo.png" alt="屈臣氏 Watsons" />
+          </div>
+          <div class="brand-divider"></div>
+          <div class="brand-title">
+            <div class="brand-portal">
+              Seller Center
+              <span class="brand-tag">WTCTW</span>
+            </div>
+          </div>
+        </a>
+
+        <div class="save-status-badge" id="saveDraftStatusBadge" title="草稿暫存狀態與時間">
+          <div class="pulse-dot" id="saveDraftPulseDot"></div>
+          <span id="saveDraftStatusText">尚未暫存</span>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <button type="button" class="btn btn-primary-brand btn-sm topbar-btn" id="manualSaveDraftBtn" title="手動儲存當前填寫草稿至瀏覽器">
+          <span>💾</span> <span class="btn-text-full">暫存草稿</span><span class="btn-text-short">暫存</span>
+        </button>
+        <button type="button" class="btn btn-secondary-white btn-sm topbar-btn" id="exportDraftJsonBtn" title="下載草稿備份檔 (.json) 至本機電腦">
+          <span>📤</span> <span class="btn-text-full">備份草稿</span><span class="btn-text-short">備份</span>
+        </button>
+        <button type="button" class="btn btn-secondary-white btn-sm topbar-btn" id="importDraftJsonBtn" title="匯入已備份之草稿檔 (.json)">
+          <span>📥</span> <span class="btn-text-full">匯入草稿</span><span class="btn-text-short">匯入</span>
+        </button>
+        <input type="file" id="importDraftJsonInput" accept=".json,application/json" style="display:none;" />
+        <button type="button" class="btn btn-secondary-white btn-sm topbar-btn" id="clearAllDraftBtn" title="清空所有欄位與暫存重新填寫">
+          <span>🗑️</span> <span class="btn-text-full">清空重填</span><span class="btn-text-short">重填</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step Navigation Bar -->
+    <nav class="step-nav-bar">
+      <div class="step-nav-container">
+        <a href="#f001" class="step-nav-item active" id="nav-f001">
+          <span class="step-nav-num"><span class="num-text">1</span></span>
+          <span>F001 店舖</span>
+        </a>
+        <a href="#f002" class="step-nav-item" id="nav-f002">
+          <span class="step-nav-num"><span class="num-text">2</span></span>
+          <span>F002 運費</span>
+        </a>
+        <a href="#f003" class="step-nav-item" id="nav-f003">
+          <span class="step-nav-num"><span class="num-text">3</span></span>
+          <span>F003 帳戶</span>
+        </a>
+        <a href="#final-step" class="step-nav-item" id="nav-final">
+          <span class="step-nav-num"><span class="num-text">4</span></span>
+          <span>匯出寄送</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <main class="app-container">
+
+    <!-- Hero Notice -->
+    <section class="hero-notice">
+      <div class="hero-text">
+        <h2>
+          <span>🛍️</span> 屈臣氏旗艦店建立與設定表單
+        </h2>
+        <p>
+          請依序完成 <strong>F001 店舖</strong>、<strong>F002 運費</strong> 與 <strong>F003 帳戶</strong> 資料填寫。
+        </p>
+      </div>
+    </section>
+
+    <!-- Forms Column (Left) -->
+    <div class="forms-column">
+
+      <!-- F001 Shop Creation -->
+      <section class="form-card" id="f001">
+        <div class="card-header-bar f001">
+          <div class="card-title-group">
+            <div class="card-icon-box">🏪</div>
+            <div class="card-title-text">
+              <h3>F001 店舖建立</h3>
+              <span>WTCTW Shop Creation</span>
+            </div>
+          </div>
+          <span class="pill-badge" id="f001Badge">必填 0 / 15</span>
+        </div>
+
+        <div class="card-body">
+          <form id="shopForm" novalidate>
+
+            <!-- 1. 店舖識別 -->
+            <div class="form-group-section">
+              <div class="group-section-title">
+                <h4><span>🏷️</span> 1. 店舖識別與代碼</h4>
+                <span class="pill-badge">系統識別</span>
+              </div>
+              <div class="form-grid">
+                <div class="field-wrapper">
+                  <div class="field-header">
+                    <label class="field-label">業務單位代碼</label>
+                    <span class="field-readonly-tag">預設值不需要填寫</span>
+                  </div>
+                  <input class="input-control" name="buCode" value="WTCTW" readonly />
+                  <div class="field-footer">
+                    <span class="field-hint">※ 預設值不需要填寫（固定為 WTCTW）</span>
+                  </div>
+                </div>
+
+                <div class="field-wrapper" data-field="shopSupplierId">
+                  <div class="field-header">
+                    <label class="field-label">廠編 (Supplier ID)<span class="field-req">*</span></label>
+                    <span class="field-key">shopSupplierId</span>
+                  </div>
+                  <input class="input-control" name="shopSupplierId" inputmode="numeric" autocomplete="off" placeholder="例如 1234567800" />
+                  <div class="field-footer">
+                    <span class="field-hint">屈臣氏核發之供應商編號（數字）</span>
+                  </div>
+                  <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+                </div>
+
+                <div class="field-wrapper col-span-2" data-field="shopMerchantName">
+                  <div class="field-header">
+                    <label class="field-label">公司名稱 (商家內部名稱)<span class="field-req">*</span></label>
+                    <span class="field-key">shopMerchantName</span>
+                  </div>
+                  <input class="input-control" name="shopMerchantName" placeholder="例如 鴻福堂集團控股有限公司" />
+                  <div class="field-footer">
+                    <span class="field-hint">供後台內部管理與核對使用</span>
+                  </div>
+                  <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+                </div>
+
+                <div class="field-wrapper col-span-2" data-field="shopCodeForURL">
+                  <div class="field-header">
+                    <label class="field-label">店舖網址代碼<span class="field-req">*</span></label>
+                    <span class="field-key">shopCodeForURL</span>
+                  </div>
+                  <div class="input-addon-wrap">
+                    <span class="input-addon-prefix">https://www.watsons.com.tw/wmall/</span>
+                    <input class="input-control" name="shopCodeForURL" spellcheck="false" placeholder="例如 hungfooktong" />
+                  </div>
+                  <div class="field-footer">
+                    <span class="field-hint">僅限英數字元，不可含空格或特殊符號。</span>
+                  </div>
+                  <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+
+                  <div class="url-code-preview-box">
+                    <span class="url-code-preview-text" id="urlPreview">https://www.watsons.com.tw/wmall/{shopCodeForURL}</span>
+                    <button type="button" class="url-code-copy-btn" id="copyUrlBtn">複製網址</button>
+                  </div>
+                </div>
+
+                <!-- Sample Figure Card -->
+                <div class="col-span-2">
+                  <div class="sample-preview-card">
+                    <div class="sample-preview-header" id="toggleSampleImg">
+                      <span><span>🖼️</span> 檢視前台欄位對照圖</span>
+                      <span class="pill-badge" style="cursor:pointer;">查看範例 🔍</span>
+                    </div>
+                    <div class="sample-preview-body">
+                      <img src="wtctw-flagship-store-example.png" class="sample-img" id="sampleThumbImg" alt="旗艦店前台對照" />
+                      <div class="sample-caption">
+                        <strong>說明：</strong> #3 店舖名稱（前台品牌主標題）；#6 店舖網址代碼（網址最後路徑代碼）。
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. 店舖顯示內容 -->
+            <div class="form-group-section">
+              <div class="group-section-title">
+                <h4><span>✨</span> 2. 前台店舖文案與描述</h4>
+                <span class="pill-badge">消費者可見</span>
+              </div>
+
+              <div class="field-wrapper" data-field="shopName_zh_TW" style="margin-bottom:14px;">
+                <div class="field-header">
+                  <label class="field-label">店舖名稱 (前台顯示)<span class="field-req">*</span></label>
+                  <span class="char-counter" id="cnt-shopName_zh_TW">0 / 55</span>
+                </div>
+                <input class="input-control" name="shopName_zh_TW" maxlength="55" placeholder="例如 鴻福堂旗艦店" />
+                <div class="field-footer">
+                  <span class="field-hint">將顯示於 WTCTW 網店前台，上限 55 個字元（對應示意圖 #3）。</span>
+                </div>
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+
+              <div class="field-wrapper" data-field="shopShortDescription_zh_TW" style="margin-bottom:14px;">
+                <div class="field-header">
+                  <label class="field-label">店舖簡介<span class="field-req">*</span></label>
+                  <span class="char-counter" id="cnt-shopShortDescription_zh_TW">0 / 1045</span>
+                </div>
+                <textarea class="input-control" name="shopShortDescription_zh_TW" maxlength="1045" placeholder="請填寫簡短店舖亮點與品牌簡介..."></textarea>
+                <div class="field-footer">
+                  <span class="field-hint">顯示於旗艦館簡介區，上限 1045 字元。</span>
+                </div>
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+
+              <div class="field-wrapper" data-field="shopDetailDescription_zh_TW" style="margin-bottom:14px;">
+                <div class="field-header">
+                  <label class="field-label">店舖詳細描述<span class="field-req">*</span></label>
+                  <span class="field-key">shopDetailDescription_zh_TW</span>
+                </div>
+                <textarea class="input-control" name="shopDetailDescription_zh_TW" placeholder="請填寫詳細品牌故事、售後服務等介紹..."></textarea>
+                <div class="field-footer">
+                  <span class="field-hint">顯示於 WTCTW 網店「店舖資訊」專屬分頁。</span>
+                </div>
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+
+              <div class="field-wrapper" data-field="termsAndConditions_zh_TW">
+                <div class="field-header">
+                  <label class="field-label">店鋪條款與細則<span class="field-req">*</span></label>
+                  <span class="field-key">termsAndConditions_zh_TW</span>
+                </div>
+                <textarea class="input-control" name="termsAndConditions_zh_TW" placeholder="若有特殊訂購條款、配送需知可填寫於此..."></textarea>
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+            </div>
+
+            <!-- 3. 標示與品牌 -->
+            <div class="form-group-section">
+              <div class="group-section-title">
+                <h4><span>🏷️</span> 3. 品牌與購物標籤</h4>
+                <span class="pill-badge">選填標籤</span>
+              </div>
+              <div class="form-grid">
+                <div class="field-wrapper col-span-2" data-field="shopDisplayBrandIds">
+                  <div class="field-header">
+                    <label class="field-label">顯示品牌編號 (Brand IDs) <span class="field-opt">選填</span></label>
+                    <span class="field-key">shopDisplayBrandIds</span>
+                  </div>
+                  <input class="input-control" name="shopDisplayBrandIds" placeholder="例如 101111|123411" />
+                  <div class="field-footer">
+                    <span class="field-hint">多組品牌編號請以直線「|」分隔。若未填寫則不顯示專屬品牌區塊。</span>
+                  </div>
+                  <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+                </div>
+
+                <!-- 背景自動根據 F002 運費設置同步與匯出 -->
+                <input type="hidden" name="shopBadgeFreeDeliveryThreshold" value="" />
+                <input type="hidden" name="shopBadgeFastestDeliveryDay" value="" />
+              </div>
+            </div>
+
+            <!-- 4. 聯絡人與地址 -->
+            <div class="form-group-section">
+              <div class="group-section-title">
+                <h4><span>👤</span> 4. 聯絡人與公司地址</h4>
+                <span class="pill-badge">自動對應 6 碼郵遞區號</span>
+              </div>
+              <div class="form-grid">
+                <div class="field-wrapper" data-field="contactPersonName">
+                  <div class="field-header">
+                    <label class="field-label">聯絡人姓名<span class="field-req">*</span></label>
+                    <span class="field-key">contactPersonName</span>
+                  </div>
+                  <input class="input-control" name="contactPersonName" placeholder="例如 陳大文" />
+                  <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+                </div>
+
+                <div class="field-wrapper" data-field="contactPersonEmail">
+                  <div class="field-header">
+                    <label class="field-label">聯絡人電子郵件<span class="field-req">*</span></label>
+                    <span class="field-key">contactPersonEmail</span>
+                  </div>
+                  <input class="input-control" name="contactPersonEmail" type="email" placeholder="例如 contact@example.com" />
+                  <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+                </div>
+
+                <div class="field-wrapper" data-field="contactPersonPhoneCountryCode">
+                  <div class="field-header">
+                    <label class="field-label">國碼<span class="field-req">*</span></label>
+                    <span class="field-key">phoneCountryCode</span>
+                  </div>
+                  <div class="input-addon-wrap">
+                    <span class="input-addon-prefix">+</span>
+                    <input class="input-control" name="contactPersonPhoneCountryCode" inputmode="numeric" value="886" />
+                  </div>
+                  <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+                </div>
+
+                <div class="field-wrapper" data-field="contactPersonPhone">
+                  <div class="field-header">
+                    <label class="field-label">聯絡電話<span class="field-req">*</span></label>
+                    <span class="field-key">contactPersonPhone</span>
+                  </div>
+                  <input class="input-control" name="contactPersonPhone" inputmode="numeric" placeholder="例如 955555000" />
+                  <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+                </div>
+
+                <div class="field-wrapper" data-field="contactPersonPhoneExt">
+                  <div class="field-header">
+                    <label class="field-label">分機 <span class="field-opt">選填</span></label>
+                    <span class="field-key">phoneExt</span>
+                  </div>
+                  <input class="input-control" name="contactPersonPhoneExt" inputmode="numeric" placeholder="例如 123" />
+                  <div class="field-footer">
+                    <span class="field-hint">匯出時自動以「電話#分機」整合</span>
+                  </div>
+                  <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+                </div>
+
+                <div class="field-wrapper" data-field="contactPersonFax">
+                  <div class="field-header">
+                    <label class="field-label">傳真號碼 <span class="field-opt">選填</span></label>
+                    <span class="field-key">fax</span>
+                  </div>
+                  <input class="input-control" name="contactPersonFax" inputmode="numeric" placeholder="選填" />
+                  <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+                </div>
+
+                <div class="field-wrapper" data-field="contactPersonCity">
+                  <div class="field-header">
+                    <label class="field-label">城市 / 縣市<span class="field-req">*</span></label>
+                    <span class="field-key">city</span>
+                  </div>
+                  <select class="input-control" name="contactPersonCity">
+                    <option value="">請選擇縣市</option>
+                  </select>
+                  <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+                </div>
+
+                <div class="field-wrapper" data-field="contactPersonState">
+                  <div class="field-header">
+                    <label class="field-label">行政區 / 鄉鎮市區<span class="field-req">*</span></label>
+                    <span class="field-key">state</span>
+                  </div>
+                  <select class="input-control" name="contactPersonState">
+                    <option value="">請先選擇縣市</option>
+                  </select>
+                  <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+                </div>
+
+                <div class="field-wrapper col-span-2" data-field="contactPersonStreet">
+                  <div class="field-header">
+                    <label class="field-label">街路門牌地址<span class="field-req">*</span></label>
+                    <span class="field-key">street</span>
+                  </div>
+                  <input class="input-control" name="contactPersonStreet" placeholder="例如 八德路四段760號11樓" />
+                  <div class="field-footer">
+                    <span class="field-hint">請輸入完整路名段數與門牌，系統將自動解析出官方 6 碼郵遞區號。</span>
+                  </div>
+                  <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+                </div>
+
+                <div class="field-wrapper col-span-2" data-field="zipCode">
+                  <div class="field-header">
+                    <label class="field-label">
+                      郵遞區號 (自動帶入 6 碼)
+                      <span id="zipSuccessBadge" class="zip-auto-badge" style="display:none;">✓ 郵遞區號已解析</span>
+                    </label>
+                    <span class="field-readonly-tag">預設值不需要填寫</span>
+                  </div>
+                  <input class="input-control" name="zipCode" inputmode="numeric" readonly placeholder="請填寫上方地址後由系統自動計算" />
+                  <div class="field-footer">
+                    <span class="field-hint">※ 預設值不需要填寫（系統依地址自動計算）</span>
+                  </div>
+                  <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. 營運設定 -->
+            <div class="form-group-section">
+              <div class="group-section-title">
+                <h4><span>💼</span> 5. 營運模式設定</h4>
+                <span class="pill-badge">固定模式</span>
+              </div>
+              <div class="form-grid">
+                <div class="field-wrapper" data-field="businessMode">
+                  <div class="field-header">
+                    <label class="field-label">商業模式</label>
+                    <span class="field-readonly-tag">預設值不需要填寫</span>
+                  </div>
+                  <input class="input-control" name="businessMode" value="銷售制" readonly />
+                  <div class="field-footer">
+                    <span class="field-hint">※ 預設值不需要填寫（固定為「銷售制」）</span>
+                  </div>
+                </div>
+
+                <div class="field-wrapper" data-field="basicCommission">
+                  <div class="field-header">
+                    <label class="field-label">基本佣金率</label>
+                    <span class="field-readonly-tag">系統自動帶入 (免填)</span>
+                  </div>
+                  <input class="input-control" name="basicCommission" readonly placeholder="依照合約議定%" />
+                  <div class="field-footer">
+                    <span class="field-hint">※ 基本佣金率是根據合約議定為主，若有疑問請跟採購聯繫。</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </section>
+
+      <!-- F002 Delivery Settings -->
+      <section class="form-card" id="f002">
+        <div class="card-header-bar f002">
+          <div class="card-title-group">
+            <div class="card-icon-box">🚚</div>
+            <div class="card-title-text">
+              <h3>F002 運費與配送設置</h3>
+              <span>WTCTW Delivery Charge</span>
+            </div>
+          </div>
+          <span class="pill-badge" id="f002Badge" style="background:#e0f2fe; color:#0284c7;">運費設定</span>
+        </div>
+
+        <div class="card-body">
+          <p style="font-size:12.5px; color:var(--text-muted); margin-bottom:14px;">
+            廠編將自動由 F001 帶入。免運費門檻與配送天數將於結帳時直接呈現給消費者。
+          </p>
+
+          <form id="deliveryForm" novalidate>
+            <div class="form-grid">
+              <div class="field-wrapper">
+                <div class="field-header">
+                  <label class="field-label">業務單位代碼</label>
+                  <span class="field-readonly-tag">預設值不需要填寫</span>
+                </div>
+                <input class="input-control" name="buCode" value="WTCTW" readonly />
+                <div class="field-footer">
+                  <span class="field-hint">※ 預設值不需要填寫（固定為 WTCTW）</span>
+                </div>
+              </div>
+
+              <div class="field-wrapper" data-field="shopSupplierId">
+                <div class="field-header">
+                  <label class="field-label">廠編 (Supplier ID)</label>
+                  <span class="field-readonly-tag">預設值不需要填寫</span>
+                </div>
+                <input class="input-control" name="shopSupplierId" readonly placeholder="由 F001 自動帶入" />
+                <div class="field-footer">
+                  <span class="field-hint">※ 預設值不需要填寫（由 F001 自動同步）</span>
+                </div>
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+
+              <div class="field-wrapper" data-field="shopFreeDeliveryThreshold">
+                <div class="field-header">
+                  <label class="field-label">免運費門檻金額<span class="field-req">*</span></label>
+                  <span class="field-key">shopFreeDeliveryThreshold</span>
+                </div>
+                <div class="input-addon-wrap">
+                  <span class="input-addon-prefix">NT$</span>
+                  <input class="input-control" name="shopFreeDeliveryThreshold" inputmode="numeric" placeholder="例如 300" />
+                </div>
+                <div class="field-footer">
+                  <span class="field-hint">享有免運優惠之訂單門檻</span>
+                </div>
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+
+              <div class="field-wrapper" data-field="shopBasicDeliveryCharge">
+                <div class="field-header">
+                  <label class="field-label">基本運費金額<span class="field-req">*</span></label>
+                  <span class="field-key">shopBasicDeliveryCharge</span>
+                </div>
+                <div class="input-addon-wrap">
+                  <span class="input-addon-prefix">NT$</span>
+                  <input class="input-control" name="shopBasicDeliveryCharge" inputmode="numeric" placeholder="例如 20" />
+                </div>
+                <div class="field-footer">
+                  <span class="field-hint">未達免運門檻時收取的運費</span>
+                </div>
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+
+              <div class="field-wrapper" data-field="shopEstimatedDeliveryStartTime">
+                <div class="field-header">
+                  <label class="field-label">預計配送開始天數<span class="field-req">*</span></label>
+                  <span class="field-key">shopEstimatedDeliveryStartTime</span>
+                </div>
+                <div class="input-addon-wrap">
+                  <input class="input-control" name="shopEstimatedDeliveryStartTime" inputmode="numeric" placeholder="例如 7" />
+                  <span class="input-addon-suffix">天</span>
+                </div>
+                <div class="field-footer">
+                  <span class="field-hint">購物車前台配送期起始天數</span>
+                </div>
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+
+              <div class="field-wrapper" data-field="shopEstimatedDeliveryEndTime">
+                <div class="field-header">
+                  <label class="field-label">預計配送結束天數<span class="field-req">*</span></label>
+                  <span class="field-key">shopEstimatedDeliveryEndTime</span>
+                </div>
+                <div class="input-addon-wrap">
+                  <input class="input-control" name="shopEstimatedDeliveryEndTime" inputmode="numeric" placeholder="例如 10" />
+                  <span class="input-addon-suffix">天</span>
+                </div>
+                <div class="field-footer">
+                  <span class="field-hint">購物車前台配送期結束天數</span>
+                </div>
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- F003 Account Creation -->
+      <section class="form-card" id="f003">
+        <div class="card-header-bar f003">
+          <div class="card-title-group">
+            <div class="card-icon-box">👥</div>
+            <div class="card-title-text">
+              <h3>F003 後台帳戶建立</h3>
+              <span>WTCTW Account Creation</span>
+            </div>
+          </div>
+          <span class="pill-badge" id="f003Badge" style="background:#ede9fe; color:#7c3aed;">SELLER_MASTER</span>
+        </div>
+
+        <div class="card-body">
+          <p style="font-size:12.5px; color:var(--text-muted); margin-bottom:14px;">
+            廠編自動同步。角色預設為 <code>SELLER_MASTER</code>。可建立多組帳戶，填妥後請按「加入帳戶清單」。
+          </p>
+
+          <div id="accountSavedNotice" class="form-status-notice is-success" style="display:none;"></div>
+
+          <form id="accountForm" novalidate>
+            <div class="form-grid">
+              <div class="field-wrapper">
+                <div class="field-header">
+                  <label class="field-label">業務單位代碼</label>
+                  <span class="field-readonly-tag">預設值不需要填寫</span>
+                </div>
+                <input class="input-control" name="buCode" value="WTCTW" readonly />
+                <div class="field-footer">
+                  <span class="field-hint">※ 預設值不需要填寫（固定為 WTCTW）</span>
+                </div>
+              </div>
+
+              <div class="field-wrapper" data-field="shopSupplierId">
+                <div class="field-header">
+                  <label class="field-label">廠編 (Supplier ID)</label>
+                  <span class="field-readonly-tag">預設值不需要填寫</span>
+                </div>
+                <input class="input-control" name="shopSupplierId" readonly placeholder="由 F001 自動帶入" />
+                <div class="field-footer">
+                  <span class="field-hint">※ 預設值不需要填寫（由 F001 自動同步）</span>
+                </div>
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+
+              <div class="field-wrapper col-span-2" data-field="email">
+                <div class="field-header">
+                  <label class="field-label">帳戶電子郵件 (登入帳號)<span class="field-req">*</span></label>
+                  <span class="field-key">email</span>
+                </div>
+                <input class="input-control" name="email" type="email" placeholder="例如 peterChan@email.com" />
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+
+              <div class="field-wrapper" data-field="lastName_en">
+                <div class="field-header">
+                  <label class="field-label">姓氏<span class="field-req">*</span></label>
+                  <span class="field-key">lastName_en</span>
+                </div>
+                <input class="input-control" name="lastName_en" placeholder="例如 陳" />
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+
+              <div class="field-wrapper" data-field="firstName_en">
+                <div class="field-header">
+                  <label class="field-label">名字<span class="field-req">*</span></label>
+                  <span class="field-key">firstName_en</span>
+                </div>
+                <input class="input-control" name="firstName_en" placeholder="例如 大文" />
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+
+              <div class="field-wrapper">
+                <div class="field-header">
+                  <label class="field-label">使用者角色</label>
+                  <span class="field-readonly-tag">預設值不需要填寫</span>
+                </div>
+                <input class="input-control" name="role" value="SELLER_MASTER" readonly />
+                <div class="field-footer">
+                  <span class="field-hint">※ 預設值不需要填寫（固定為 SELLER_MASTER）</span>
+                </div>
+              </div>
+
+              <div class="field-wrapper" data-field="phoneCountryCode">
+                <div class="field-header">
+                  <label class="field-label">電話國碼 <span class="field-opt">選填</span></label>
+                  <span class="field-key">phoneCountryCode</span>
+                </div>
+                <div class="input-addon-wrap">
+                  <span class="input-addon-prefix">+</span>
+                  <input class="input-control" name="phoneCountryCode" inputmode="numeric" value="886" />
+                </div>
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+
+              <div class="field-wrapper" data-field="phone">
+                <div class="field-header">
+                  <label class="field-label">聯絡電話 <span class="field-opt">選填</span></label>
+                  <span class="field-key">phone</span>
+                </div>
+                <input class="input-control" name="phone" inputmode="numeric" placeholder="例如 955555000" />
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+
+              <div class="field-wrapper" data-field="phoneExt">
+                <div class="field-header">
+                  <label class="field-label">分機 <span class="field-opt">選填</span></label>
+                  <span class="field-key">phoneExt</span>
+                </div>
+                <input class="input-control" name="phoneExt" inputmode="numeric" placeholder="例如 123" />
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+
+              <div class="field-wrapper col-span-2" data-field="description_en">
+                <div class="field-header">
+                  <label class="field-label">帳戶描述 / 部門職稱 <span class="field-opt">選填</span></label>
+                  <span class="field-key">description_en</span>
+                </div>
+                <input class="input-control" name="description_en" placeholder="例如 供應商 A 客服主管" />
+                <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
+              </div>
+            </div>
+
+            <div class="btn-group-actions">
+              <button type="submit" class="btn btn-primary-brand" id="accountSaveBtn">
+                <span>➕</span> <span id="accountSaveBtnText">加入帳戶清單</span>
+              </button>
+              <button type="button" class="btn btn-secondary-white" id="accountResetBtn">
+                <span>🔄</span> 清空填寫
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Live Dashboard & Summary Column (Right Sidebar) -->
+    <aside class="dashboard-sidebar">
+
+      <!-- Overall Status & Readiness Card -->
+      <section class="summary-card">
+        <div class="summary-card-header">
+          <h3><span>📊</span> 即時填寫進度總覽</h3>
+          <span class="pill-badge" id="overallStatusBadge">檢查中</span>
+        </div>
+        <div class="summary-card-body">
+          <div class="progress-overview-box">
+            <div class="progress-labels">
+              <span>整體資料完成度</span>
+              <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" id="progressBar"></div>
+            </div>
+          </div>
+
+          <div class="status-check-list">
+            <div class="status-check-item">
+              <div class="item-title">
+                <span>🏪</span> F001 店舖資料
+              </div>
+              <span class="status-tag is-pending" id="f001CheckTag">待完成 (0/15)</span>
+            </div>
+
+            <div class="status-check-item">
+              <div class="item-title">
+                <span>🚚</span> F002 運費設定
+              </div>
+              <span class="status-tag is-pending" id="f002CheckTag">待完成</span>
+            </div>
+
+            <div class="status-check-item">
+              <div class="item-title">
+                <span>👥</span> F003 帳戶建立
+              </div>
+              <span class="status-tag is-pending" id="f003CheckTag">0 組帳戶</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- F003 Accounts List Card -->
+      <section class="summary-card">
+        <div class="summary-card-header">
+          <h3><span>👥</span> F003 已建立帳戶清單</h3>
+          <span class="pill-badge" id="accountCountBadge">0 筆</span>
+        </div>
+        <div class="summary-card-body" style="padding:12px 16px;">
+          <div id="accountTable">
+            <div class="table-empty-state">尚未加入任何帳戶，請於左側 F003 填妥後按「加入帳戶清單」</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final Export Box -->
+      <section class="export-box-gradient" id="final-step">
+        <h3><span>📦</span> 匯出與寄送設定</h3>
+        <p>
+          系統已將所有填寫資料整合至 3 份標準 Excel (.xlsx) 範本，並支援一鍵打包為單一壓縮檔 (.zip)。支援手機原生分享、下載壓縮檔或產生 Outlook 郵件草稿。
+        </p>
+
+        <div class="mail-recipient-chip">
+          <span>收件人：aswatsonstw@gmail.com; Kevinte@watsons.com.tw; JaneChang@watsons.com.tw</span>
+          <button type="button" class="url-code-copy-btn" id="copyMailBtn">複製信箱</button>
+        </div>
+
+        <div class="btn-export-group">
+          <!-- Standard Download Options -->
+          <div class="export-channel-title"><span>📦</span> 下載與寄送</div>
+          
+          <button type="button" class="btn btn-export-csv" id="downloadAllBtn">
+            <span>⬇️</span> 下載 3 份 Excel 打包壓縮檔 (.zip)
+          </button>
+          
+          <button type="button" class="btn btn-export-eml" id="emailBtn">
+            <span>📎</span> 電腦 Outlook 郵件草稿 (.eml 夾帶 .zip)
+          </button>
+          <div style="font-size:11.5px; color:var(--text-muted); line-height:1.4; margin-top:-2px; padding:0 2px;">
+            ※ 手機用戶請選擇【下載 .zip 壓縮檔】並自行夾帶寄送。<br/>
+            ※ 電腦下載 .eml 若瀏覽器跳出安全確認請點選「保留」。
+          </div>
+        </div>
+      </section>
+
+    </aside>
+
+  </main>
+
+  <!-- Privacy Footer -->
+  <footer class="app-footer">
+    <div class="footer-privacy-card">
+      <strong>※ 個人資料保護聲明：</strong>供應商提供其個人資料予台灣屈臣氏個人用品商店股份有限公司（以下稱「台灣屈臣氏」）辦理合約、管理、聯繫、諮詢、訴訟等相關事宜，台灣屈臣氏利用期間、地區、對象及方式，將於達成上開目的範圍內為之，供應商有權查詢或請求閱覽、請求製給複製本、請求補充或更正、請求停止蒐集、處理或利用，及請求刪除。如不提供或刪除，將影響合約之締結與履行。
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal for Sample Image -->
+  <div class="modal-backdrop" id="sampleModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h4>旗艦店前台介面欄位對照示意圖</h4>
+        <button type="button" class="modal-close-btn" id="closeModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <img src="wtctw-flagship-store-example.png" alt="旗艦店範例放大圖" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="tw-zip6-data.js"></script>
+  <script src="excel_engine.js"></script>
+  <script>
+    /**
+     * 屈臣氏 WTCTW 廠商建立表單核心邏輯
+     */
+    const ACTIVE_STORAGE_KEY = "wtctw-shop-creation-v6";
+    const LEGACY_STORAGE_KEYS = ["wtctw-shop-creation-v5", "wtctw-shop-creation-v4", "wtctw-shop-creation"];
+    const MAIL_TO = "aswatsonstw@gmail.com;Kevinte@watsons.com.tw;JaneChang@watsons.com.tw";
+    const MAIL_TO_DISPLAY = "aswatsonstw@gmail.com; Kevinte@watsons.com.tw; JaneChang@watsons.com.tw";
+
+    const CITY_ORDER = [
+      "基隆市","台北市","新北市","桃園市","新竹市","新竹縣","苗栗縣","台中市",
+      "彰化縣","南投縣","雲林縣","嘉義市","嘉義縣","台南市","高雄市","屏東縣",
+      "台東縣","花蓮縣","宜蘭縣","澎湖縣","金門縣","連江縣"
+    ];
+    const TW_ZIP = {
+      "基隆市":{"仁愛區":"200","信義區":"201","中正區":"202","中山區":"203","安樂區":"204","暖暖區":"205","七堵區":"206"},
+      "台北市":{"中正區":"100","大同區":"103","中山區":"104","松山區":"105","大安區":"106","萬華區":"108","信義區":"110","士林區":"111","北投區":"112","內湖區":"114","南港區":"115","文山區":"116"},
+      "新北市":{"萬里區":"207","金山區":"208","板橋區":"220","汐止區":"221","深坑區":"222","石碇區":"223","瑞芳區":"224","平溪區":"226","雙溪區":"227","貢寮區":"228","新店區":"231","坪林區":"232","烏來區":"233","永和區":"234","中和區":"235","土城區":"236","三峽區":"237","樹林區":"238","鶯歌區":"239","三重區":"241","新莊區":"242","泰山區":"243","林口區":"244","蘆洲區":"247","五股區":"248","八里區":"249","淡水區":"251","三芝區":"252","石門區":"253"},
+      "桃園市":{"中壢區":"320","平鎮區":"324","龍潭區":"325","楊梅區":"326","新屋區":"327","觀音區":"328","桃園區":"330","龜山區":"333","八德區":"334","大溪區":"335","復興區":"336","大園區":"337","蘆竹區":"338"},
+      "新竹市":{"東區":"300","北區":"300","香山區":"300"},
+      "新竹縣":{"竹北市":"302","湖口鄉":"303","新豐鄉":"304","新埔鎮":"305","關西鎮":"306","芎林鄉":"307","寶山鄉":"308","竹東鎮":"310","五峰鄉":"311","橫山鄉":"312","尖石鄉":"313","北埔鄉":"314","峨眉鄉":"315"},
+      "苗栗縣":{"竹南鎮":"350","頭份市":"351","三灣鄉":"352","南庄鄉":"353","獅潭鄉":"354","後龍鎮":"356","通霄鎮":"357","苑裡鎮":"358","苗栗市":"360","造橋鄉":"361","頭屋鄉":"362","公館鄉":"363","大湖鄉":"364","泰安鄉":"365","銅鑼鄉":"366","三義鄉":"367","西湖鄉":"368","卓蘭鎮":"369"},
+      "台中市":{"中區":"400","東區":"401","南區":"402","西區":"403","北區":"404","北屯區":"406","西屯區":"407","南屯區":"408","太平區":"411","大里區":"412","霧峰區":"413","烏日區":"414","豐原區":"420","后里區":"421","石岡區":"422","東勢區":"423","和平區":"424","新社區":"426","潭子區":"427","大雅區":"428","神岡區":"429","大肚區":"432","沙鹿區":"433","龍井區":"434","梧棲區":"435","清水區":"436","大甲區":"437","外埔區":"438","大安區":"439"},
+      "彰化縣":{"彰化市":"500","芬園鄉":"502","花壇鄉":"503","秀水鄉":"504","鹿港鎮":"505","福興鄉":"506","線西鄉":"507","和美鎮":"508","伸港鄉":"509","員林市":"510","社頭鄉":"511","永靖鄉":"512","埔心鄉":"513","溪湖鎮":"514","大村鄉":"515","埔鹽鄉":"516","田中鎮":"520","北斗鎮":"521","田尾鄉":"522","埤頭鄉":"523","溪州鄉":"524","竹塘鄉":"525","二林鎮":"526","大城鄉":"527","芳苑鄉":"528","二水鄉":"530"},
+      "南投縣":{"南投市":"540","中寮鄉":"541","草屯鎮":"542","國姓鄉":"544","埔里鎮":"545","仁愛鄉":"546","名間鄉":"551","集集鎮":"552","水里鄉":"553","魚池鄉":"555","信義鄉":"556","竹山鎮":"557","鹿谷鄉":"558"},
+      "雲林縣":{"斗南鎮":"630","大埤鄉":"631","虎尾鎮":"632","土庫鎮":"633","褒忠鄉":"634","東勢鄉":"635","臺西鄉":"636","崙背鄉":"637","麥寮鄉":"638","斗六市":"640","林內鄉":"643","古坑鄉":"646","莿桐鄉":"647","西螺鎮":"648","二崙鄉":"649","北港鎮":"651","水林鄉":"652","口湖鄉":"653","四湖鄉":"654","元長鄉":"655"},
+      "嘉義市":{"東區":"600","西區":"600"},
+      "嘉義縣":{"番路鄉":"602","梅山鄉":"603","竹崎鄉":"604","阿里山鄉":"605","中埔鄉":"606","大埔鄉":"607","水上鄉":"608","鹿草鄉":"611","太保市":"612","朴子市":"613","東石鄉":"614","六腳鄉":"615","新港鄉":"616","民雄鄉":"621","大林鎮":"622","溪口鄉":"623","義竹鄉":"624","布袋鎮":"625"},
+      "台南市":{"中西區":"700","東區":"701","南區":"702","北區":"704","安平區":"708","安南區":"709","永康區":"710","歸仁區":"711","新化區":"712","左鎮區":"713","玉井區":"714","楠西區":"715","南化區":"716","仁德區":"717","關廟區":"718","龍崎區":"719","官田區":"720","麻豆區":"721","佳里區":"722","西港區":"723","七股區":"724","將軍區":"725","學甲區":"726","北門區":"727","新營區":"730","後壁區":"731","白河區":"732","東山區":"733","六甲區":"734","下營區":"735","柳營區":"736","鹽水區":"737","善化區":"741","大內區":"742","山上區":"743","新市區":"744","安定區":"745"},
+      "高雄市":{"新興區":"800","前金區":"801","苓雅區":"802","鹽埕區":"803","鼓山區":"804","旗津區":"805","前鎮區":"806","三民區":"807","楠梓區":"811","小港區":"812","左營區":"813","仁武區":"814","大社區":"815","岡山區":"820","路竹區":"821","阿蓮區":"822","田寮區":"823","燕巢區":"824","橋頭區":"825","梓官區":"826","彌陀區":"827","永安區":"828","湖內區":"829","鳳山區":"830","大寮區":"831","林園區":"832","鳥松區":"833","大樹區":"840","旗山區":"842","美濃區":"843","六龜區":"844","內門區":"845","杉林區":"846","甲仙區":"847","桃源區":"848","那瑪夏區":"849","茂林區":"851","茄萣區":"852"},
+      "屏東縣":{"屏東市":"900","三地門鄉":"901","霧臺鄉":"902","瑪家鄉":"903","九如鄉":"904","里港鄉":"905","高樹鄉":"906","鹽埔鄉":"907","長治鄉":"908","麟洛鄉":"909","竹田鄉":"911","內埔鄉":"912","萬丹鄉":"913","潮州鎮":"920","泰武鄉":"921","來義鄉":"922","萬巒鄉":"923","崁頂鄉":"924","新埤鄉":"925","南州鄉":"926","林邊鄉":"927","東港鎮":"928","琉球鄉":"929","佳冬鄉":"931","新園鄉":"932","枋寮鄉":"940","枋山鄉":"941","春日鄉":"942","獅子鄉":"943","車城鄉":"944","牡丹鄉":"945","恆春鎮":"946","滿州鄉":"947"},
+      "台東縣":{"臺東市":"950","綠島鄉":"951","蘭嶼鄉":"952","延平鄉":"953","卑南鄉":"954","鹿野鄉":"955","關山鎮":"956","海端鄉":"957","池上鄉":"958","東河鄉":"959","成功鎮":"961","長濱鄉":"962","太麻里鄉":"963","金峰鄉":"964","大武鄉":"965","達仁鄉":"966"},
+      "花蓮縣":{"花蓮市":"970","新城鄉":"971","秀林鄉":"972","吉安鄉":"973","壽豐鄉":"974","鳳林鎮":"975","光復鄉":"976","豐濱鄉":"977","瑞穗鄉":"978","萬榮鄉":"979","玉里鎮":"981","卓溪鄉":"982","富里鄉":"983"},
+      "宜蘭縣":{"宜蘭市":"260","頭城鎮":"261","礁溪鄉":"262","壯圍鄉":"263","員山鄉":"264","羅東鎮":"265","三星鄉":"266","大同鄉":"267","五結鄉":"268","冬山鄉":"269","蘇澳鎮":"270","南澳鄉":"272"},
+      "澎湖縣":{"馬公市":"880","西嶼鄉":"881","望安鄉":"882","七美鄉":"883","白沙鄉":"884","湖西鄉":"885"},
+      "金門縣":{"金沙鎮":"890","金湖鎮":"891","金寧鄉":"892","金城鎮":"893","烈嶼鄉":"894","烏坵鄉":"896"},
+      "連江縣":{"南竿鄉":"209","北竿鄉":"210","莒光鄉":"211","東引鄉":"212"}
+    };
+
+    // 基本佣金率資料表 (依據「基本佣金率.xlsx」廠編 100% 比對)
+    const COMMISSION_RATES = {
+      "1085190501": "8%",
+      "1054700501": "24.7%",
+      "1084470501": "10%",
+      "1122886501": "18%",
+      "1098835501": "30%",
+      "1112063501": "20%",
+      "1092487501": "20%",
+      "1096306501": "20%",
+      "1085370501": "20.5%",
+      "1100032501": "20%",
+      "1082466501": "20%",
+      "1119703501": "16%",
+      "1054914501": "22%",
+      "1099816501": "11%",
+      "1081291501": "25%",
+      "1073846502": "11%",
+      "1086602501": "30%",
+      "1118133501": "30%",
+      "1113571501": "40%",
+      "1009900501": "20%",
+      "1091879502": "20%",
+      "1085638501": "35%",
+      "1123261501": "30%",
+      "1077425501": "30%",
+      "1111712501": "30%",
+      "1125386501": "22%",
+      "1083527501": "10%",
+      "1116126501": "25%",
+      "1129324501": "3%"
+    };
+
+    function applyCommissionRate(supplierId) {
+      const sid = String(supplierId || "").trim();
+      const rate = COMMISSION_RATES[sid];
+      if (rate != null) {
+        form.elements.basicCommission.value = rate;
+      } else {
+        form.elements.basicCommission.value = "";
+      }
+    }
+
+    const HEADERS_EN = [
+      "buCode","shopSupplierId","shopName_zh_TW","shopShortDescription_zh_TW",
+      "shopDetailDescription_zh_TW","termsAndConditions_zh_TW","shopCodeForURL",
+      "shopMerchantName","shopDisplayBrandIds","shopBadgeFreeDeliveryThreshold",
+      "shopBadgeFastestDeliveryDay","contactPersonName","contactPersonPhoneCountryCode",
+      "contactPersonPhone","contactPersonFax","contactPersonEmail","contactPersonStreet",
+      "contactPersonCity","contactPersonState","contactPersonCountry","zipCode",
+      "businessMode","basicCommission"
+    ];
+    const HEADERS_TC = [
+      "業務單位代碼","廠編","店舖名稱","店舖簡介","店舖詳細描述","條款與細則",
+      "店舖網址代碼","商家名稱","顯示品牌 ID","免運門檻標示","最快配送日標示",
+      "聯絡人姓名","聯絡人電話國碼","聯絡人電話","聯絡人傳真","聯絡人電郵",
+      "聯絡人地址","聯絡人城市","聯絡人州／省","聯絡人國家","郵遞區號",
+      "商業模式","基本佣金率"
+    ];
+    const F002_HEADERS_EN = [
+      "buCode","shopSupplierId","shopFreeDeliveryThreshold","shopBasicDeliveryCharge",
+      "shopEstimatedDeliveryStartTime","shopEstimatedDeliveryEndTime"
+    ];
+    const F002_HEADERS_TC = [
+      "業務單位代碼","廠編","免運費門檻","基本運費","預計配送開始時間","預計配送結束時間"
+    ];
+    const F003_HEADERS_EN = [
+      "buCode","shopSupplierId","email","role","phoneCountryCode","phone",
+      "description_en","firstName_en","lastName_en"
+    ];
+    const F003_HEADERS_TC = [
+      "業務單位代碼","廠編","電子郵件","使用者角色","電話國碼","電話","描述","名字","姓氏"
+    ];
+    const F003_REQUIRED = ["shopSupplierId","email","role","firstName_en","lastName_en"];
+    const REQUIRED = [
+      "shopSupplierId","shopName_zh_TW","shopShortDescription_zh_TW",
+      "shopDetailDescription_zh_TW","termsAndConditions_zh_TW","shopCodeForURL","shopMerchantName",
+      "contactPersonName","contactPersonPhoneCountryCode","contactPersonPhone",
+      "contactPersonEmail","contactPersonStreet","contactPersonCity",
+      "contactPersonState","contactPersonCountry","zipCode"
+    ];
+
+    const form = document.getElementById("shopForm");
+    const deliveryForm = document.getElementById("deliveryForm");
+    const accountForm = document.getElementById("accountForm");
+    const recordTable = document.getElementById("recordTable");
+    const accountTable = document.getElementById("accountTable");
+    const progressBar = document.getElementById("progressBar");
+    const progressPercent = document.getElementById("progressPercent");
+    const urlPreview = document.getElementById("urlPreview");
+    const zipSuccessBadge = document.getElementById("zipSuccessBadge");
+
+    const navItems = {
+      "f001": document.getElementById("nav-f001"),
+      "f002": document.getElementById("nav-f002"),
+      "f003": document.getElementById("nav-f003"),
+      "final-step": document.getElementById("nav-final")
+    };
+
+    let accountRecords = [];
+    let accountEditingIndex = null;
+
+    function showToast(message, type = 'info') {
+      const container = document.getElementById("toastContainer");
+      const el = document.createElement("div");
+      el.className = 'toast-msg ' + type;
+      let icon = 'ℹ️';
+      if (type === 'success') icon = '✅';
+      if (type === 'warning') icon = '⚠️';
+      if (type === 'error') icon = '❌';
+      el.innerHTML = '<span>' + icon + '</span><span>' + message + '</span>';
+      container.appendChild(el);
+      setTimeout(() => el.classList.add("show"), 10);
+      setTimeout(() => {
+        el.classList.remove("show");
+        setTimeout(() => el.remove(), 300);
+      }, 3500);
+    }
+
+    function defaults() {
+      return {
+        buCode: "WTCTW",
+        shopSupplierId: "",
+        shopName_zh_TW: "",
+        shopShortDescription_zh_TW: "",
+        shopDetailDescription_zh_TW: "",
+        termsAndConditions_zh_TW: "",
+        shopCodeForURL: "",
+        shopMerchantName: "",
+        shopDisplayBrandIds: "",
+        shopBadgeFreeDeliveryThreshold: "",
+        shopBadgeFastestDeliveryDay: "",
+        contactPersonName: "",
+        contactPersonPhoneCountryCode: "886",
+        contactPersonPhone: "",
+        contactPersonPhoneExt: "",
+        contactPersonFax: "",
+        contactPersonEmail: "",
+        contactPersonStreet: "",
+        contactPersonCity: "",
+        contactPersonState: "",
+        contactPersonCountry: "台灣",
+        zipCode: "",
+        businessMode: "銷售制",
+        basicCommission: ""
+      };
+    }
+
+    function populateCities() {
+      const sel = form.elements.contactPersonCity;
+      const current = String(sel.value || "").replace(/臺/g, "台");
+      sel.innerHTML = '<option value="">請選擇縣市</option>' + CITY_ORDER.map(function (c) {
+        return '<option value="' + c + '">' + c + "</option>";
+      }).join("");
+      if (current && TW_ZIP[current]) sel.value = current;
+    }
+
+    function zipCityKey(city) {
+      return String(city || "").replace(/台/g, "臺");
+    }
+
+    function parseTwStreet(raw) {
+      const s = String(raw || "").replace(/\s+/g, "");
+      if (!s) return { road: "", number: undefined, lane: undefined, alley: undefined };
+      const laneM = s.match(/(\d+)巷/);
+      const alleyM = s.match(/(\d+)弄/);
+      const numM = s.match(/(\d+)(?:之\d+)?號/);
+      const road = s.split(/\d+巷|\d+弄|\d+(?:之\d+)?號/)[0]
+        .replace(/(\d+)樓.*$/, "")
+        .replace(/[0-9]+段/g, function (m) {
+          const n = parseInt(m, 10);
+          const cjk = ["", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
+          return (n >= 1 && n <= 9) ? (cjk[n] + "段") : m;
+        });
+      return {
+        road: road,
+        number: numM ? Number(numM[1]) : undefined,
+        lane: laneM ? Number(laneM[1]) : undefined,
+        alley: alleyM ? Number(alleyM[1]) : undefined
+      };
+    }
+
+    function parseZip6Rules(rulesStr) {
+      if (!rulesStr) return [];
+      return String(rulesStr).split("|").map(function (ruleStr) {
+        const parts = ruleStr.split(",");
+        return [
+          parts[0],
+          Number(parts[1]) || 0,
+          Number(parts[2]) || 0,
+          Number(parts[3]) || 0,
+          Number(parts[4]) || 0,
+          Number(parts[5]) || 0,
+          Number(parts[6]) || 0,
+          Number(parts[7]) || 0,
+          Number(parts[8]) || 0,
+          Number(parts[9]) || 0
+        ];
+      });
+    }
+
+    function matchZip6Rule(rules, number, lane, alley) {
+      for (let i = 0; i < rules.length; i++) {
+        const suffix = rules[i][0];
+        const even = rules[i][1];
+        const rLane = rules[i][2];
+        const rLane1 = rules[i][3];
+        const rAlley = rules[i][4];
+        const rAlley1 = rules[i][5];
+        const noBgn = rules[i][6];
+        const noEnd = rules[i][8];
+        if (rLane > 0 || rLane1 > 0) {
+          if (!lane) continue;
+          if (rLane > 0 && rLane1 > 0) {
+            if (lane < rLane || lane > rLane1) continue;
+          } else if (rLane > 0) {
+            if (noEnd === 9999 || noEnd === 9998) {
+              if (lane < rLane) continue;
+            } else if (lane !== rLane) continue;
+          }
+        }
+        if (rAlley > 0 || rAlley1 > 0) {
+          if (!alley) continue;
+          if (rAlley > 0 && rAlley1 > 0) {
+            if (alley < rAlley || alley > rAlley1) continue;
+          } else if (rAlley > 0 && alley !== rAlley) continue;
+        }
+        if (number !== undefined && (noBgn > 0 || noEnd > 0)) {
+          if (even === 1 && number % 2 === 0) continue;
+          if (even === 2 && number % 2 === 1) continue;
+          const maxNo = (noEnd === 9999 || noEnd === 9998) ? Infinity : noEnd;
+          if (noBgn > 0 && number < noBgn) continue;
+          if (maxNo !== Infinity && number > maxNo) continue;
+        } else if (even !== 0 && number !== undefined) {
+          if (even === 1 && number % 2 === 0) continue;
+          if (even === 2 && number % 2 === 1) continue;
+        }
+        return suffix;
+      }
+      return rules.length ? rules[0][0] : "";
+    }
+
+    function findZip6Road(areaData, road) {
+      if (!road || !areaData) return "";
+      if (areaData[road]) return road;
+      const keys = Object.keys(areaData);
+      let best = "";
+      for (let i = 0; i < keys.length; i++) {
+        const k = keys[i];
+        if (road === k) return k;
+        if (road.indexOf(k) === 0 || k.indexOf(road) === 0) {
+          if (k.length > best.length) best = k;
+        }
+      }
+      return best;
+    }
+
+    function lookupZip6(city, dist, street) {
+      const pack = window.TW_ZIP6;
+      if (!pack || !city || !dist) return "";
+      const cityKey = zipCityKey(city);
+      const cityData = pack.data && pack.data[cityKey];
+      const normCity = String(city || "").replace(/臺/g, "台");
+      const zip3 = (pack.zip3 && pack.zip3[cityKey] && pack.zip3[cityKey][dist])
+        || (TW_ZIP[normCity] && TW_ZIP[normCity][dist])
+        || "";
+      if (!cityData || !cityData[dist] || !zip3) return "";
+      const parsed = parseTwStreet(street);
+      const road = findZip6Road(cityData[dist], parsed.road);
+      if (!road) return "";
+      const suffix = matchZip6Rule(parseZip6Rules(cityData[dist][road]), parsed.number, parsed.lane, parsed.alley);
+      return suffix ? (zip3 + suffix) : "";
+    }
+
+    function applyZip() {
+      const rawCity = form.elements.contactPersonCity.value;
+      const city = String(rawCity || "").replace(/臺/g, "台").trim();
+      const dist = form.elements.contactPersonState.value;
+      const street = String(form.elements.contactPersonStreet.value || "").trim();
+      const zip6 = lookupZip6(city, dist, street);
+      if (zip6) {
+        form.elements.zipCode.value = zip6;
+        zipSuccessBadge.style.display = "inline-flex";
+        zipSuccessBadge.textContent = "✓ 已匹配 6 碼: " + zip6;
+        return;
+      }
+      const pack = window.TW_ZIP6;
+      const cityKey = zipCityKey(city);
+      const z3 = (TW_ZIP[city] && TW_ZIP[city][dist]) || (pack && pack.zip3 && pack.zip3[cityKey] && pack.zip3[cityKey][dist]) || "";
+      if (z3) {
+        form.elements.zipCode.value = z3;
+        zipSuccessBadge.style.display = "inline-flex";
+        zipSuccessBadge.textContent = "✓ 預設 3 碼: " + z3;
+        return;
+      }
+      form.elements.zipCode.value = "";
+      zipSuccessBadge.style.display = "none";
+    }
+
+    function populateDistricts(preferred) {
+      const city = String(form.elements.contactPersonCity.value || "").replace(/臺/g, "台").trim();
+      const sel = form.elements.contactPersonState;
+      const keep = preferred != null ? preferred : sel.value;
+      sel.innerHTML = city ? '<option value="">請選擇行政區</option>' : '<option value="">請先選擇縣市</option>';
+      if (city && TW_ZIP[city]) {
+        Object.keys(TW_ZIP[city]).forEach(function (d) {
+          sel.appendChild(new Option(d, d));
+        });
+      }
+      if (keep && city && TW_ZIP[city] && TW_ZIP[city][keep]) sel.value = keep;
+      else sel.value = "";
+      applyZip();
+    }
+
+    function mergePhoneExt(phone, ext) {
+      phone = String(phone || "").trim();
+      ext = String(ext || "").trim();
+      if (phone && ext) return phone + "#" + ext;
+      return phone || ext;
+    }
+
+    function splitPhoneExt(value) {
+      const s = String(value || "");
+      const i = s.indexOf("#");
+      if (i < 0) return { phone: s, ext: "" };
+      return { phone: s.slice(0, i), ext: s.slice(i + 1) };
+    }
+
+    function readForm() {
+      const data = defaults();
+      HEADERS_EN.forEach((key) => {
+        const el = form.elements[key];
+        if (el) data[key] = String(el.value || "").trim();
+      });
+      data.buCode = "WTCTW";
+      data.contactPersonCountry = "台灣";
+      data.contactPersonCity = String(form.elements.contactPersonCity.value || "").trim();
+      data.contactPersonState = String(form.elements.contactPersonState.value || "").trim();
+      applyZip();
+      data.zipCode = String(form.elements.zipCode.value || "").trim();
+      data.businessMode = "銷售制";
+      data.basicCommission = String(form.elements.basicCommission.value || "").replace(/%/g, "").trim();
+      data.contactPersonPhoneExt = String(form.elements.contactPersonPhoneExt.value || "").trim();
+      
+      // 自動根據 F002 運費設置於背景寫入
+      const del = readDelivery();
+      data.shopBadgeFreeDeliveryThreshold = String(del.shopFreeDeliveryThreshold || (form.elements.shopBadgeFreeDeliveryThreshold && form.elements.shopBadgeFreeDeliveryThreshold.value) || "").trim();
+      data.shopBadgeFastestDeliveryDay = String(del.shopEstimatedDeliveryStartTime || (form.elements.shopBadgeFastestDeliveryDay && form.elements.shopBadgeFastestDeliveryDay.value) || "").trim();
+      return data;
+    }
+
+    function fillForm(data) {
+      if (!data) return;
+      HEADERS_EN.forEach((key) => {
+        if (key === "contactPersonCity" || key === "contactPersonState" || key === "zipCode" || key === "basicCommission" || key === "businessMode" || key === "contactPersonPhone") return;
+        const el = form.elements[key];
+        if (el && data[key] != null) el.value = String(data[key]);
+      });
+      if (form.elements.buCode) form.elements.buCode.value = "WTCTW";
+      if (form.elements.contactPersonCountry) form.elements.contactPersonCountry.value = "台灣";
+      if (form.elements.businessMode) form.elements.businessMode.value = "銷售制";
+      applyCommissionRate(data.shopSupplierId);
+      const phoneParts = splitPhoneExt(data.contactPersonPhone);
+      form.elements.contactPersonPhone.value = phoneParts.phone || (data.contactPersonPhone != null ? String(data.contactPersonPhone) : "");
+      form.elements.contactPersonPhoneExt.value = data.contactPersonPhoneExt || phoneParts.ext || "";
+      
+      populateCities();
+      const normCity = String(data.contactPersonCity || "").replace(/臺/g, "台").trim();
+      if (normCity && TW_ZIP[normCity]) {
+        form.elements.contactPersonCity.value = normCity;
+      } else {
+        form.elements.contactPersonCity.value = "";
+      }
+      populateDistricts(data.contactPersonState || "");
+
+      if (data.shopBadgeFreeDeliveryThreshold != null && data.shopBadgeFreeDeliveryThreshold !== "") {
+        form.elements.shopBadgeFreeDeliveryThreshold.value = String(data.shopBadgeFreeDeliveryThreshold);
+      }
+      if (data.shopBadgeFastestDeliveryDay != null && data.shopBadgeFastestDeliveryDay !== "") {
+        form.elements.shopBadgeFastestDeliveryDay.value = String(data.shopBadgeFastestDeliveryDay);
+      }
+      if (data.zipCode) {
+        form.elements.zipCode.value = String(data.zipCode);
+      }
+
+      syncSupplierId();
+      clearErrors();
+      updateCounters();
+      updateUrlPreview();
+      updateProgress();
+    }
+
+    function setError(name, message, root) {
+      const wrap = (root || form).querySelector('[data-field="' + name + '"]');
+      if (!wrap) return;
+      wrap.classList.add("has-error");
+      const err = wrap.querySelector(".err-text");
+      if (err) err.textContent = message;
+    }
+
+    function clearErrors() {
+      document.querySelectorAll(".field-wrapper.has-error").forEach((el) => el.classList.remove("has-error"));
+    }
+
+    function validate(data, opt) {
+      const scroll = !opt || opt.scroll !== false;
+      const paint = !opt || opt.paint !== false;
+      if (paint) clearErrors();
+      const errors = [];
+      const digits = /^\d+$/;
+      const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const urlCode = /^[A-Za-z0-9]+$/;
+      const brandIds = /^[A-Za-z0-9]+(\|[A-Za-z0-9]+)*$/;
+
+      REQUIRED.forEach((key) => {
+        if (!data[key]) errors.push([key, "此欄為必填欄位"]);
+      });
+
+      if (data.shopSupplierId && !digits.test(data.shopSupplierId)) {
+        errors.push(["shopSupplierId", "廠編須為純數字"]);
+      }
+      if (data.shopName_zh_TW.length > 55) {
+        errors.push(["shopName_zh_TW", "最長不得超過 55 個字元"]);
+      }
+      if (data.shopShortDescription_zh_TW.length > 1045) {
+        errors.push(["shopShortDescription_zh_TW", "最長不得超過 1045 個字元"]);
+      }
+      if (data.shopCodeForURL && !urlCode.test(data.shopCodeForURL)) {
+        errors.push(["shopCodeForURL", "僅限英數字元，不可包含空格或特殊符號"]);
+      }
+      if (data.shopDisplayBrandIds && !brandIds.test(data.shopDisplayBrandIds)) {
+        errors.push(["shopDisplayBrandIds", "品牌代碼請以 | 分隔，僅限英數"]);
+      }
+      ["shopBadgeFreeDeliveryThreshold","shopBadgeFastestDeliveryDay","contactPersonPhoneCountryCode","contactPersonPhone","contactPersonFax"].forEach((key) => {
+        if (data[key] && !digits.test(data[key])) errors.push([key, "須為數字"]);
+      });
+      if (data.contactPersonPhoneExt && !digits.test(data.contactPersonPhoneExt)) {
+        errors.push(["contactPersonPhoneExt", "須為數字"]);
+      }
+      if (data.zipCode && !/^\d{3}$|^\d{6}$/.test(data.zipCode)) {
+        errors.push(["zipCode", "須為有效郵遞區號"]);
+      }
+      if (!data.zipCode && data.contactPersonCity && data.contactPersonState && data.contactPersonStreet) {
+        errors.push(["zipCode", "無法依地址帶入郵遞區號，請確認城市、行政區與路名門牌"]);
+      }
+      if (data.contactPersonEmail && !email.test(data.contactPersonEmail)) {
+        errors.push(["contactPersonEmail", "電子郵件格式不正確"]);
+      }
+      if (data.contactPersonCity && !TW_ZIP[data.contactPersonCity]) {
+        errors.push(["contactPersonCity", "請選擇縣市"]);
+      }
+      if (data.contactPersonCity && data.contactPersonState && !(TW_ZIP[data.contactPersonCity] && TW_ZIP[data.contactPersonCity][data.contactPersonState])) {
+        errors.push(["contactPersonState", "請選擇行政區"]);
+      }
+
+      const unique = [];
+      const seen = new Set();
+      errors.forEach((item) => {
+        if (!seen.has(item[0])) {
+          seen.add(item[0]);
+          unique.push(item);
+        }
+      });
+      if (paint) {
+        unique.forEach(([key, msg]) => setError(key, msg, form));
+      }
+      if (paint && scroll && unique.length) {
+        const first = form.querySelector('[data-field="' + unique[0][0] + '"]');
+        if (first) first.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      return unique;
+    }
+
+    function csvCell(value) {
+      const s = value == null ? "" : String(value);
+      if (/[",\n\r]/.test(s)) return '"' + s.replace(/"/g, '""') + '"';
+      return s;
+    }
+
+    function toCsvWithHeaders(headersEn, headersTc, rows) {
+      const lines = [
+        headersEn.map(csvCell).join(","),
+        headersTc.map(csvCell).join(",")
+      ];
+      rows.forEach((row) => {
+        lines.push(headersEn.map((key) => csvCell(row[key])).join(","));
+      });
+      return "\uFEFF" + lines.join("\r\n");
+    }
+
+    function updateCounters() {
+      const name = form.elements.shopName_zh_TW.value;
+      const short = form.elements.shopShortDescription_zh_TW.value;
+      const nEl = document.getElementById("cnt-shopName_zh_TW");
+      const sEl = document.getElementById("cnt-shopShortDescription_zh_TW");
+      nEl.textContent = name.length + " / 55";
+      sEl.textContent = short.length + " / 1045";
+      nEl.classList.toggle("is-limit", name.length > 55);
+      sEl.classList.toggle("is-limit", short.length > 1045);
+    }
+
+    function updateUrlPreview() {
+      const code = String(form.elements.shopCodeForURL.value || "").trim();
+      urlPreview.textContent = "https://www.watsons.com.tw/wmall/" + (code || "{shopCodeForURL}");
+    }
+
+    function updateProgress() {
+      const data = readForm();
+      const filled = REQUIRED.filter((key) => data[key]).length;
+      const f001Badge = document.getElementById("f001Badge");
+      f001Badge.textContent = "已填 " + filled + " / " + REQUIRED.length;
+
+      const f001Tag = document.getElementById("f001CheckTag");
+      const navF001 = document.getElementById("nav-f001");
+      const navF002 = document.getElementById("nav-f002");
+      const navF003 = document.getElementById("nav-f003");
+      const navFinal = document.getElementById("nav-final");
+
+      const f001Ok = (filled === REQUIRED.length);
+      if (f001Ok) {
+        f001Tag.className = "status-tag is-ready";
+        f001Tag.textContent = "✓ 已完成 (15/15)";
+        navF001.classList.add("completed");
+      } else {
+        f001Tag.className = "status-tag is-pending";
+        const remain = REQUIRED.length - filled;
+        f001Tag.textContent = "已填 " + filled + " / 15 (尚餘 " + remain + " 欄)";
+        navF001.classList.remove("completed");
+      }
+
+      // Check F002
+      const del = readDelivery();
+      const delFields = ["shopFreeDeliveryThreshold", "shopBasicDeliveryCharge", "shopEstimatedDeliveryStartTime", "shopEstimatedDeliveryEndTime"];
+      const delFilled = delFields.filter(k => del[k]).length;
+      const delOk = !validateDelivery(del, { scroll: false, paint: false }).length;
+      const f002Tag = document.getElementById("f002CheckTag");
+      if (delOk) {
+        f002Tag.className = "status-tag is-ready";
+        f002Tag.textContent = "✓ 免運 NT$" + del.shopFreeDeliveryThreshold;
+        navF002.classList.add("completed");
+      } else if (delFilled > 0) {
+        f002Tag.className = "status-tag is-pending";
+        f002Tag.textContent = "已填 " + delFilled + " / 4 (尚餘 " + (4 - delFilled) + " 欄)";
+        navF002.classList.remove("completed");
+      } else {
+        f002Tag.className = "status-tag is-pending";
+        f002Tag.textContent = "待填寫 (0/4)";
+        navF002.classList.remove("completed");
+      }
+
+      // Check F003
+      const f003Tag = document.getElementById("f003CheckTag");
+      const accDraft = readAccount();
+      const accDraftFilled = F003_REQUIRED.filter(k => accDraft[k]).length;
+      const accDraftValid = !validateAccount(accDraft, { scroll: false, paint: false }).length;
+      const accOk = (accountRecords.length > 0) || accDraftValid;
+
+      if (accountRecords.length > 0) {
+        f003Tag.className = "status-tag is-ready";
+        f003Tag.textContent = "✓ " + accountRecords.length + " 組帳戶";
+        navF003.classList.add("completed");
+      } else if (accDraftValid) {
+        f003Tag.className = "status-tag is-ready";
+        f003Tag.textContent = "✓ 草稿已就緒 (1 組)";
+        navF003.classList.add("completed");
+      } else if (accDraftFilled > 0) {
+        f003Tag.className = "status-tag is-pending";
+        f003Tag.textContent = "草稿填寫中 (" + accDraftFilled + "/5)";
+        navF003.classList.remove("completed");
+      } else {
+        f003Tag.className = "status-tag is-pending";
+        f003Tag.textContent = "待建立帳戶";
+        navF003.classList.remove("completed");
+      }
+
+      // Calculate Overall Score
+      let score = (filled / REQUIRED.length) * 50;
+      score += (delFilled / 4) * 25;
+      score += (accountRecords.length > 0 ? 25 : (accDraftValid ? 25 : (accDraftFilled / 5) * 20));
+
+      const pct = Math.min(100, Math.round(score));
+      progressBar.style.width = pct + "%";
+      progressPercent.textContent = pct + "%";
+
+      const overallBadge = document.getElementById("overallStatusBadge");
+      if (pct === 100) {
+        overallBadge.textContent = "已就緒可匯出";
+        overallBadge.style.background = "var(--success-bg)";
+        overallBadge.style.color = "var(--success)";
+        navFinal.classList.add("completed");
+      } else {
+        overallBadge.textContent = "資料填寫中 (" + pct + "%)";
+        overallBadge.style.background = "var(--warning-bg)";
+        overallBadge.style.color = "var(--warning)";
+        navFinal.classList.remove("completed");
+      }
+    }
+
+    function safeStorageGet(key) {
+      try {
+        const val = localStorage.getItem(key);
+        if (val) return val;
+      } catch (e) {}
+      try {
+        const val = sessionStorage.getItem(key);
+        if (val) return val;
+      } catch (e) {}
+      try {
+        if (window.name) {
+          const winData = JSON.parse(window.name);
+          if (winData && typeof winData === "object" && winData[key]) return winData[key];
+        }
+      } catch (e) {}
+      return null;
+    }
+
+    function safeStorageSet(key, value) {
+      let ok = false;
+      try {
+        localStorage.setItem(key, value);
+        ok = true;
+      } catch (e) {}
+      try {
+        sessionStorage.setItem(key, value);
+        ok = true;
+      } catch (e) {}
+      try {
+        let winData = {};
+        try { winData = JSON.parse(window.name || "{}"); } catch (e) { winData = {}; }
+        if (typeof winData !== "object" || winData === null) winData = {};
+        winData[key] = value;
+        window.name = JSON.stringify(winData);
+        ok = true;
+      } catch (e) {}
+      return ok;
+    }
+
+    function safeStorageRemove(key) {
+      try { localStorage.removeItem(key); } catch (e) {}
+      try { sessionStorage.removeItem(key); } catch (e) {}
+      try {
+        if (window.name) {
+          const winData = JSON.parse(window.name);
+          if (winData && typeof winData === "object" && winData[key]) {
+            delete winData[key];
+            window.name = JSON.stringify(winData);
+          }
+        }
+      } catch (e) {}
+    }
+
+    function formatTime(d) {
+      return [
+        String(d.getHours()).padStart(2, "0"),
+        String(d.getMinutes()).padStart(2, "0"),
+        String(d.getSeconds()).padStart(2, "0")
+      ].join(":");
+    }
+
+    function setSaveDraftBadgeStatus(status, timeStr) {
+      const badge = document.getElementById("saveDraftStatusBadge");
+      const text = document.getElementById("saveDraftStatusText");
+      if (!badge || !text) return;
+
+      if (status === "saved") {
+        badge.classList.add("saved-flash");
+        text.textContent = "已暫存 (" + (timeStr || formatTime(new Date())) + ")";
+        setTimeout(() => {
+          badge.classList.remove("saved-flash");
+        }, 1800);
+      } else if (status === "restored") {
+        badge.classList.remove("saved-flash");
+        text.textContent = "已載入暫存 (" + (timeStr || formatTime(new Date())) + ")";
+      } else {
+        badge.classList.remove("saved-flash");
+        text.textContent = "尚未暫存";
+      }
+    }
+
+    function saveDraftManually(showToastMsg) {
+      try {
+        // Auto-commit valid F003 draft account if user filled it but didn't click add button
+        const currentAcc = readAccount();
+        if (currentAcc.email && currentAcc.lastName_en && currentAcc.firstName_en) {
+          if (!validateAccount(currentAcc, { scroll: false, paint: false }).length) {
+            const dup = accountRecords.some((r, idx) => r.email === currentAcc.email && idx !== accountEditingIndex);
+            if (!dup) {
+              if (accountEditingIndex == null) {
+                accountRecords.push(currentAcc);
+              } else {
+                accountRecords[accountEditingIndex] = currentAcc;
+                accountEditingIndex = null;
+              }
+              fillAccount(accountDefaults());
+              setAccountEditingUi();
+              renderAccounts();
+              updateProgress();
+            }
+          }
+        }
+
+        const now = new Date();
+        const timeStr = formatTime(now);
+        const payload = JSON.stringify({
+          version: "v6",
+          timestamp: now.getTime(),
+          timeStr: timeStr,
+          draft: readForm(),
+          delivery: readDelivery(),
+          accountRecords,
+          accountEditingIndex,
+          accountDraft: readAccount()
+        });
+        const savedOk = safeStorageSet(ACTIVE_STORAGE_KEY, payload);
+        if (savedOk) {
+          setSaveDraftBadgeStatus("saved", timeStr);
+          if (showToastMsg) {
+            showToast("✅ 已成功儲存草稿！（暫存時間 " + timeStr + "）下次開啟網頁可繼續填寫", "success");
+          }
+          return true;
+        } else {
+          showToast("⚠️ 暫存失敗，請檢查瀏覽器儲存空間或隱私權限", "error");
+          return false;
+        }
+      } catch (e) {
+        console.warn("Manual save error:", e);
+        showToast("⚠️ 暫存時發生錯誤：" + e.message, "error");
+        return false;
+      }
+    }
+
+    function exportDraftJson() {
+      saveDraftManually(false);
+      const data = {
+        version: "v6",
+        timestamp: Date.now(),
+        exportedAt: new Date().toISOString(),
+        draft: readForm(),
+        delivery: readDelivery(),
+        accountRecords: accountRecords,
+        accountEditingIndex: accountEditingIndex,
+        accountDraft: readAccount()
+      };
+      const sid = data.draft.shopSupplierId || "draft";
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "WTCTW_Draft_" + sid + ".json";
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+      showToast("✓ 已下載草稿備份檔 (" + a.download + ")！可隨時使用「匯入草稿」還原", "success");
+    }
+
+    function importDraftJson(file) {
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        try {
+          const saved = JSON.parse(e.target.result);
+          if (!saved || (!saved.draft && !saved.records)) {
+            showToast("⚠️ 檔案格式不符，請確認是否為 WTCTW 草稿備份檔 (.json)", "error");
+            return;
+          }
+          const draft = saved.draft || (Array.isArray(saved.records) && saved.records[0]) || defaults();
+          fillForm(draft);
+          if (saved.delivery) fillDelivery(saved.delivery);
+          accountRecords = Array.isArray(saved.accountRecords) ? saved.accountRecords : [];
+          accountEditingIndex = Number.isInteger(saved.accountEditingIndex) ? saved.accountEditingIndex : null;
+          if (saved.accountDraft && (saved.accountDraft.email || saved.accountDraft.lastName_en || saved.accountDraft.firstName_en)) {
+            fillAccount(saved.accountDraft);
+          } else if (accountRecords.length > 0) {
+            fillAccount(accountRecords[0]);
+          } else {
+            fillAccount(accountDefaults());
+          }
+          setAccountEditingUi();
+          hydrateLinkedDelivery(saved);
+          refresh();
+          saveDraftManually(false);
+          showToast("✅ 已成功匯入草稿備份資料！", "success");
+        } catch (err) {
+          showToast("⚠️ 解析檔案失敗：" + err.message, "error");
+        }
+      };
+      reader.readAsText(file, "UTF-8");
+    }
+
+    function persist() {
+      // Manual save mode: background auto-save is disabled per user preference
+    }
+
+    function restore() {
+      try {
+        let raw = safeStorageGet(ACTIVE_STORAGE_KEY);
+        if (!raw) {
+          for (const k of LEGACY_STORAGE_KEYS) {
+            raw = safeStorageGet(k);
+            if (raw) break;
+          }
+        }
+        if (!raw) {
+          setSaveDraftBadgeStatus("none");
+          return { ok: false };
+        }
+        const saved = JSON.parse(raw);
+        const draft = saved.draft || (Array.isArray(saved.records) && saved.records[0]) || defaults();
+        fillForm(draft);
+        if (saved.delivery) fillDelivery(saved.delivery);
+        accountRecords = Array.isArray(saved.accountRecords) ? saved.accountRecords : [];
+        accountEditingIndex = Number.isInteger(saved.accountEditingIndex) ? saved.accountEditingIndex : null;
+
+        // F003 UI Auto-fill: Show the current/first account so user immediately sees their data
+        if (saved.accountDraft && (saved.accountDraft.email || saved.accountDraft.lastName_en || saved.accountDraft.firstName_en)) {
+          fillAccount(saved.accountDraft);
+        } else if (accountRecords.length > 0) {
+          const idx = (accountEditingIndex != null && accountRecords[accountEditingIndex]) ? accountEditingIndex : 0;
+          accountEditingIndex = idx;
+          fillAccount(accountRecords[idx]);
+        } else {
+          fillAccount(accountDefaults());
+        }
+
+        setAccountEditingUi();
+        hydrateLinkedDelivery(saved);
+
+        let savedTime = "";
+        if (saved.timeStr) {
+          savedTime = saved.timeStr;
+        } else if (saved.timestamp) {
+          savedTime = formatTime(new Date(saved.timestamp));
+        }
+        setSaveDraftBadgeStatus("restored", savedTime || formatTime(new Date()));
+        return { ok: true, timeStr: savedTime };
+      } catch (e) {
+        console.warn("Restore error:", e);
+        setSaveDraftBadgeStatus("none");
+        return { ok: false };
+      }
+    }
+
+    function clearAllDrafts() {
+      safeStorageRemove(ACTIVE_STORAGE_KEY);
+      LEGACY_STORAGE_KEYS.forEach(safeStorageRemove);
+      accountRecords = [];
+      accountEditingIndex = null;
+      fillForm(defaults());
+      fillDelivery(deliveryDefaults());
+      fillAccount(accountDefaults());
+      setAccountEditingUi();
+      populateCities();
+      populateDistricts("");
+      refresh();
+      setSaveDraftBadgeStatus("none");
+      showToast("已清空所有表單內容與暫存紀錄！", "info");
+    }
+
+    function renderRecords() {
+      if (!recordTable) return;
+      const data = readForm();
+      const ready = REQUIRED.every(function (key) { return data[key]; });
+      if (!ready) {
+        recordTable.innerHTML = '<div class="table-empty-state">請完成左側 F001 必填欄位以預覽店舖摘要</div>';
+        return;
+      }
+      const del = readDelivery();
+      const freeThreshold = del.shopFreeDeliveryThreshold || data.shopBadgeFreeDeliveryThreshold;
+      recordTable.innerHTML =
+        '<div class="shop-summary-box">' +
+          '<div class="summary-meta-row"><span class="summary-label">廠編：</span><strong class="summary-val">' + escapeHtml(data.shopSupplierId) + '</strong></div>' +
+          '<div class="summary-meta-row"><span class="summary-label">店舖名稱：</span><span class="summary-val">' + escapeHtml(data.shopName_zh_TW) + '</span></div>' +
+          '<div class="summary-meta-row"><span class="summary-label">店舖代碼：</span><code class="summary-val">' + escapeHtml(data.shopCodeForURL) + '</code></div>' +
+          '<div class="summary-meta-row"><span class="summary-label">免運門檻：</span><span class="summary-val">' + (freeThreshold ? ("NT$ " + escapeHtml(freeThreshold)) : "-") + '</span></div>' +
+        '</div>';
+    }
+
+    function escapeHtml(s) {
+      return String(s || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function refresh() {
+      renderRecords();
+      renderAccounts();
+      renderDeliveryStatus();
+      updateProgress();
+    }
+
+    form.addEventListener("input", (e) => {
+      applyZip();
+      updateCounters();
+      updateUrlPreview();
+      updateProgress();
+      syncSupplierId();
+      const name = e.target && e.target.name;
+      if (name === "shopBadgeFreeDeliveryThreshold" || name === "shopBadgeFastestDeliveryDay") {
+        syncLinkedDelivery("f001");
+        renderDeliveryStatus();
+      }
+      renderRecords();
+    });
+
+    form.elements.contactPersonCity.addEventListener("change", () => {
+      populateDistricts("");
+      updateProgress();
+      renderRecords();
+    });
+    form.elements.contactPersonState.addEventListener("change", () => {
+      applyZip();
+      updateProgress();
+      renderRecords();
+    });
+
+    form.addEventListener("submit", (e) => e.preventDefault());
+
+    // Delivery Form Logics
+    function deliveryDefaults() {
+      return {
+        buCode: "WTCTW",
+        shopSupplierId: currentSupplierId(),
+        shopFreeDeliveryThreshold: "",
+        shopBasicDeliveryCharge: "",
+        shopEstimatedDeliveryStartTime: "",
+        shopEstimatedDeliveryEndTime: ""
+      };
+    }
+
+    function accountDefaults() {
+      return {
+        buCode: "WTCTW",
+        shopSupplierId: currentSupplierId(),
+        email: "",
+        role: "SELLER_MASTER",
+        phoneCountryCode: "886",
+        phone: "",
+        phoneExt: "",
+        description_en: "",
+        firstName_en: "",
+        lastName_en: ""
+      };
+    }
+
+    function readDelivery() {
+      const data = deliveryDefaults();
+      F002_HEADERS_EN.forEach(function (key) {
+        const el = deliveryForm.elements[key];
+        if (el) data[key] = String(el.value || "").trim();
+      });
+      data.buCode = "WTCTW";
+      data.shopSupplierId = currentSupplierId();
+      return data;
+    }
+
+    function fillDelivery(data) {
+      if (!data) return;
+      F002_HEADERS_EN.forEach(function (key) {
+        const el = deliveryForm.elements[key];
+        if (el && key !== "shopSupplierId" && data[key] != null) {
+          el.value = String(data[key]);
+        }
+      });
+      deliveryForm.elements.buCode.value = "WTCTW";
+      syncSupplierId();
+    }
+
+    function readAccount() {
+      const data = accountDefaults();
+      const fields = ["email","lastName_en","firstName_en","role","phoneCountryCode","phone","phoneExt","description_en"];
+      fields.forEach(function (key) {
+        const el = accountForm.elements[key];
+        if (el) data[key] = String(el.value || "").trim();
+      });
+      data.buCode = "WTCTW";
+      data.role = "SELLER_MASTER";
+      data.shopSupplierId = currentSupplierId();
+      return data;
+    }
+
+    function fillAccount(data) {
+      if (!data) return;
+      const fields = ["email","lastName_en","firstName_en","role","phoneCountryCode","phone","phoneExt","description_en"];
+      fields.forEach(function (key) {
+        const el = accountForm.elements[key];
+        if (el && key !== "shopSupplierId" && key !== "role") {
+          el.value = (data[key] != null) ? String(data[key]) : "";
+        }
+      });
+      accountForm.elements.buCode.value = "WTCTW";
+      accountForm.elements.role.value = "SELLER_MASTER";
+      accountForm.querySelectorAll(".field-wrapper.has-error").forEach(function (el) { el.classList.remove("has-error"); });
+      syncSupplierId();
+    }
+
+    function currentSupplierId() {
+      return String(form.elements.shopSupplierId.value || "").trim();
+    }
+
+    function syncSupplierId() {
+      const id = currentSupplierId();
+      deliveryForm.elements.shopSupplierId.value = id;
+      accountForm.elements.shopSupplierId.value = id;
+      applyCommissionRate(id);
+    }
+
+    let linkingDelivery = false;
+
+    function syncLinkedDelivery(from) {
+      if (linkingDelivery) return;
+      linkingDelivery = true;
+      const badgeFree = form.elements.shopBadgeFreeDeliveryThreshold;
+      const badgeFast = form.elements.shopBadgeFastestDeliveryDay;
+      const delFree = deliveryForm.elements.shopFreeDeliveryThreshold;
+      const delStart = deliveryForm.elements.shopEstimatedDeliveryStartTime;
+      if (from === "f001") {
+        delFree.value = String(badgeFree.value || "").trim();
+        delStart.value = String(badgeFast.value || "").trim();
+      } else if (from === "f002") {
+        badgeFree.value = String(delFree.value || "").trim();
+        badgeFast.value = String(delStart.value || "").trim();
+      }
+      linkingDelivery = false;
+    }
+
+    function hydrateLinkedDelivery(saved) {
+      const del = saved && saved.delivery ? saved.delivery : {};
+      const draft = saved && saved.draft ? saved.draft : {};
+      
+      const freeVal = del.shopFreeDeliveryThreshold || draft.shopBadgeFreeDeliveryThreshold || "";
+      if (freeVal) {
+        deliveryForm.elements.shopFreeDeliveryThreshold.value = freeVal;
+        form.elements.shopBadgeFreeDeliveryThreshold.value = freeVal;
+      }
+
+      const startVal = del.shopEstimatedDeliveryStartTime || draft.shopBadgeFastestDeliveryDay || "";
+      if (startVal) {
+        deliveryForm.elements.shopEstimatedDeliveryStartTime.value = startVal;
+        form.elements.shopBadgeFastestDeliveryDay.value = startVal;
+      }
+    }
+
+    function validateDelivery(data, opt) {
+      const scroll = !opt || opt.scroll !== false;
+      const paint = !opt || opt.paint !== false;
+      if (paint) deliveryForm.querySelectorAll(".field-wrapper.has-error").forEach(function (el) { el.classList.remove("has-error"); });
+      const errors = [];
+      const digits = /^\d+$/;
+      if (!data.shopSupplierId) errors.push(["shopSupplierId", "請先於 F001 填寫廠編"]);
+      ["shopFreeDeliveryThreshold","shopBasicDeliveryCharge","shopEstimatedDeliveryStartTime","shopEstimatedDeliveryEndTime"].forEach(function (key) {
+        if (!data[key]) errors.push([key, "此欄為必填欄位"]);
+        else if (!digits.test(data[key])) errors.push([key, "須為純數字"]);
+      });
+      if (data.shopEstimatedDeliveryStartTime && data.shopEstimatedDeliveryEndTime && Number(data.shopEstimatedDeliveryStartTime) > Number(data.shopEstimatedDeliveryEndTime)) {
+        errors.push(["shopEstimatedDeliveryEndTime", "結束時間不可早於開始時間"]);
+      }
+      const unique = [];
+      const seen = {};
+      errors.forEach(function (item) {
+        if (!seen[item[0]]) { seen[item[0]] = true; unique.push(item); }
+      });
+      unique.forEach(function (item) { if (paint) setError(item[0], item[1], deliveryForm); });
+      if (paint && scroll && unique.length) {
+        const first = deliveryForm.querySelector('[data-field="' + unique[0][0] + '"]');
+        if (first) first.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      return unique;
+    }
+
+    function validateAccount(data, opt) {
+      const scroll = !opt || opt.scroll !== false;
+      const paint = !opt || opt.paint !== false;
+      if (paint) accountForm.querySelectorAll(".field-wrapper.has-error").forEach(function (el) { el.classList.remove("has-error"); });
+      const errors = [];
+      const digits = /^\d+$/;
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      F003_REQUIRED.forEach(function (key) {
+        if (!data[key]) errors.push([key, "此欄為必填欄位"]);
+      });
+      if (data.email && !emailRe.test(data.email)) errors.push(["email", "電子郵件格式不正確"]);
+      if (data.phoneCountryCode && !digits.test(data.phoneCountryCode)) errors.push(["phoneCountryCode", "須為數字"]);
+      if (data.phone && !digits.test(data.phone)) errors.push(["phone", "須為數字"]);
+      const dup = accountRecords.some(function (row, i) {
+        return row.email === data.email && i !== accountEditingIndex;
+      });
+      if (data.email && dup) errors.push(["email", "該電子郵件已存在於帳戶清單中"]);
+      const unique = [];
+      const seen = {};
+      errors.forEach(function (item) {
+        if (!seen[item[0]]) { seen[item[0]] = true; unique.push(item); }
+      });
+      if (paint) {
+        unique.forEach(function (item) { setError(item[0], item[1], accountForm); });
+      }
+      if (paint && scroll && unique.length) {
+        const first = accountForm.querySelector('[data-field="' + unique[0][0] + '"]');
+        if (first) first.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      return unique;
+    }
+
+    function renderDeliveryStatus() {
+      const data = readDelivery();
+      const ok = !validateDelivery(data, { scroll: false, paint: false }).length;
+      const tag = document.getElementById("f002CheckTag");
+      const navF002 = document.getElementById("nav-f002");
+      if (ok) {
+        tag.className = "status-tag is-ready";
+        tag.textContent = "✓ 免運 NT$" + data.shopFreeDeliveryThreshold;
+        navF002.classList.add("completed");
+      } else {
+        tag.className = "status-tag is-pending";
+        tag.textContent = "待完成";
+        navF002.classList.remove("completed");
+      }
+    }
+
+    function setAccountEditingUi() {
+      const btnText = document.getElementById("accountSaveBtnText");
+      const noticeBox = document.getElementById("accountSavedNotice");
+      const resetBtn = document.getElementById("accountResetBtn");
+
+      if (accountEditingIndex == null) {
+        if (resetBtn) resetBtn.innerHTML = "<span>🔄</span> 清空填寫";
+        if (accountRecords.length > 0) {
+          if (btnText) btnText.textContent = "加入此筆帳戶";
+          if (noticeBox) {
+            noticeBox.style.display = "flex";
+            noticeBox.className = "form-status-notice is-success";
+            const names = accountRecords.map(function (a) {
+              const name = (escapeHtml(a.lastName_en || "") + escapeHtml(a.firstName_en || "")).trim() || "未具名";
+              return name + " (" + escapeHtml(a.email) + ")";
+            }).join("、");
+            noticeBox.innerHTML = "<span>✓ 已建立 <strong>" + accountRecords.length + "</strong> 組主要帳戶（" + names + "），帳戶設定已滿足，可直接匯出。若有其他協同管理同仁，可使用下方表單繼續新增。</span>";
+          }
+        } else {
+          if (btnText) btnText.textContent = "加入帳戶清單";
+          if (noticeBox) {
+            noticeBox.style.display = "none";
+          }
+        }
+      } else {
+        if (btnText) btnText.textContent = "💾 更新第 " + (accountEditingIndex + 1) + " 組帳戶";
+        if (resetBtn) resetBtn.innerHTML = "<span>➕</span> 新增另一組帳戶";
+        if (noticeBox) {
+          noticeBox.style.display = "flex";
+          noticeBox.className = "form-status-notice is-editing";
+          noticeBox.innerHTML = "<span>✏️ 目前正在檢視／編輯第 <strong>" + (accountEditingIndex + 1) + "</strong> 組帳戶資料。如需修改請按「更新帳戶」；如欲額外增加其他同仁帳戶請按「新增另一組帳戶」。</span>";
+        }
+      }
+    }
+
+    function renderAccounts() {
+      const countBadge = document.getElementById("accountCountBadge");
+      const f003Tag = document.getElementById("f003CheckTag");
+      const navF003 = document.getElementById("nav-f003");
+
+      countBadge.textContent = accountRecords.length + " 筆";
+      if (!accountRecords.length) {
+        accountTable.innerHTML = '<div class="table-empty-state">尚未加入任何帳戶，請於左側 F003 填妥後按「加入帳戶清單」</div>';
+        f003Tag.className = "status-tag is-pending";
+        f003Tag.textContent = "0 組帳戶";
+        navF003.classList.remove("completed");
+        return;
+      }
+      f003Tag.className = "status-tag is-ready";
+      f003Tag.textContent = "✓ " + accountRecords.length + " 組帳戶";
+      navF003.classList.add("completed");
+
+      const cards = accountRecords.map(function (row, i) {
+        const fullName = (escapeHtml(row.lastName_en) + escapeHtml(row.firstName_en)).trim() || "未填姓名";
+        const email = escapeHtml(row.email);
+        const role = escapeHtml(row.role || "SELLER_MASTER");
+        const phone = row.phone ? ("+" + escapeHtml(row.phoneCountryCode || "886") + " " + escapeHtml(row.phone) + (row.phoneExt ? (" #" + escapeHtml(row.phoneExt)) : "")) : "";
+
+        return '<div class="account-item-card">' +
+          '<div class="account-item-top">' +
+            '<div class="account-item-identity">' +
+              '<span class="account-item-num">#' + (i + 1) + '</span>' +
+              '<strong class="account-item-name">' + fullName + '</strong>' +
+              '<span class="pill-badge">' + role + '</span>' +
+            '</div>' +
+            '<div class="account-item-actions">' +
+              '<button type="button" class="btn btn-secondary-white btn-sm" data-acc-edit="' + i + '">編輯</button>' +
+              '<button type="button" class="btn btn-danger-light btn-sm" data-acc-del="' + i + '">刪除</button>' +
+            '</div>' +
+          '</div>' +
+          '<div class="account-item-email">✉️ ' + email + '</div>' +
+          (phone ? ('<div class="account-item-phone">📞 ' + phone + '</div>') : '') +
+        '</div>';
+      }).join("");
+
+      accountTable.innerHTML = '<div class="account-cards-list">' + cards + '</div>';
+      setAccountEditingUi();
+    }
+
+    function collectShopRows() {
+      const data = readForm();
+      if (!validate(data, { scroll: false }).length) return [data];
+      return [];
+    }
+
+    function collectAccountRows() {
+      if (accountRecords.length) return accountRecords.slice();
+      const data = readAccount();
+      if (!validateAccount(data, { scroll: false }).length) return [data];
+      return [];
+    }
+
+    function collectThreeFiles() {
+      syncSupplierId();
+      const shops = collectShopRows();
+      if (!shops.length) {
+        showToast("⚠️ 請先完成 F001 店舖必填欄位", "warning");
+        document.getElementById("f001").scrollIntoView({ behavior: "smooth" });
+        validate(readForm());
+        return null;
+      }
+      const delivery = readDelivery();
+      if (validateDelivery(delivery).length) {
+        showToast("⚠️ 請先完成 F002 運費設置必填欄位", "warning");
+        document.getElementById("f002").scrollIntoView({ behavior: "smooth" });
+        return null;
+      }
+      const accounts = collectAccountRows();
+      if (!accounts.length) {
+        showToast("⚠️ 請先於 F003 建立至少一組管理員帳戶", "warning");
+        document.getElementById("f003").scrollIntoView({ behavior: "smooth" });
+        validateAccount(readAccount());
+        return null;
+      }
+      shops.forEach(function (row) {
+        row.shopBadgeFreeDeliveryThreshold = delivery.shopFreeDeliveryThreshold;
+        row.shopBadgeFastestDeliveryDay = delivery.shopEstimatedDeliveryStartTime;
+      });
+      const companyName = shops[0].shopMerchantName || "";
+      const supplierId = shops[0].shopSupplierId || "";
+
+      const mimeXlsx = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+      const supplierSuffix = supplierId ? "_" + supplierId : "";
+
+      const f001Name = "F001 WTCTW_Shop_Creation_v1.0" + supplierSuffix + ".xlsx";
+      const f002Name = "F002 WTCTW Shop_Delivery_Charge_Creation_v1.0" + supplierSuffix + ".xlsx";
+      const f003Name = "F003 WTCTW_Account_Creation_v1.0" + supplierSuffix + ".xlsx";
+
+      const files = [
+        {
+          name: f001Name,
+          blob: WTCTW_EXCEL.generateExcelBlob("F001", HEADERS_EN, shops),
+          u8: WTCTW_EXCEL.generateExcelUint8Array("F001", HEADERS_EN, shops),
+          base64: WTCTW_EXCEL.generateExcelBase64("F001", HEADERS_EN, shops),
+          type: mimeXlsx
+        },
+        {
+          name: f002Name,
+          blob: WTCTW_EXCEL.generateExcelBlob("F002", F002_HEADERS_EN, [delivery]),
+          u8: WTCTW_EXCEL.generateExcelUint8Array("F002", F002_HEADERS_EN, [delivery]),
+          base64: WTCTW_EXCEL.generateExcelBase64("F002", F002_HEADERS_EN, [delivery]),
+          type: mimeXlsx
+        },
+        {
+          name: f003Name,
+          blob: WTCTW_EXCEL.generateExcelBlob("F003", F003_HEADERS_EN, accounts),
+          u8: WTCTW_EXCEL.generateExcelUint8Array("F003", F003_HEADERS_EN, accounts),
+          base64: WTCTW_EXCEL.generateExcelBase64("F003", F003_HEADERS_EN, accounts),
+          type: mimeXlsx
+        }
+      ];
+
+      const zipMap = {};
+      files.forEach(function (f) {
+        zipMap[f.name] = f.u8;
+      });
+      const zipU8 = WTCTW_EXCEL.generateZipUint8Array(zipMap);
+      const zipName = "WTCTW_Vendor_Setup_" + (supplierId || "files") + ".zip";
+      const zipFile = {
+        name: zipName,
+        blob: new Blob([zipU8], { type: "application/zip" }),
+        u8: zipU8,
+        base64: WTCTW_EXCEL.u8ToBase64(zipU8),
+        type: "application/zip"
+      };
+
+      const emlName = "WTCTW_Vendor_Setup_" + (supplierId || "mail") + ".eml";
+      const eml = buildEml(zipFile, companyName, supplierId);
+      return { files: files, zipFile: zipFile, eml: eml, emlName: emlName, shops: shops, delivery: delivery, accounts: accounts };
+    }
+
+    function buildStandardMailBody(pack) {
+      const shop = (pack && pack.shops && pack.shops[0]) || {};
+      const companyName = shop.shopMerchantName || "";
+      const supplierId = shop.shopSupplierId || "";
+      const supplierSuffix = supplierId ? "_" + supplierId : "";
+
+      return [
+        "收件信箱：aswatsonstw@gmail.com; Kevinte@watsons.com.tw; JaneChang@watsons.com.tw",
+        "",
+        "您好，",
+        "",
+        "附件為屈臣氏 Seller Center 廠商建立資料壓縮檔（內含 3 份 Excel 檔案）：",
+        "1. F001 店舖建立 (F001 WTCTW_Shop_Creation_v1.0" + supplierSuffix + ".xlsx)",
+        "2. F002 運費設置 (F002 WTCTW Shop_Delivery_Charge_Creation_v1.0" + supplierSuffix + ".xlsx)",
+        "3. F003 帳戶建立 (F003 WTCTW_Account_Creation_v1.0" + supplierSuffix + ".xlsx)",
+        "",
+        "廠編：" + (supplierId || ""),
+        "公司名稱：" + (companyName || ""),
+        "",
+        "請查收。"
+      ].join("\r\n");
+    }
+
+    function downloadBinaryFile(file) {
+      const blob = file.blob || new Blob([file.u8], { type: file.type });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = file.name;
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    }
+
+    function downloadTextFile(file) {
+      const blob = new Blob([file.content || file.csv || ""], { type: file.type || "text/plain;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = file.name;
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    }
+
+    function utf8ToBase64(str) {
+      const bytes = new TextEncoder().encode(str);
+      let bin = "";
+      bytes.forEach(function (b) { bin += String.fromCharCode(b); });
+      return btoa(bin);
+    }
+
+    function foldBase64(b64) {
+      return b64.replace(/(.{76})/g, "$1\r\n");
+    }
+
+    function encodeSubject(text) {
+      return "=?UTF-8?B?" + utf8ToBase64(text) + "?=";
+    }
+
+    function buildEml(zipFile, companyName, supplierId) {
+      const boundary = "----=_WTCTW_" + Date.now();
+      const subject = "WTCTW 廠商建立資料 - " + (supplierId || "") + " - " + (companyName || "");
+      const body = buildStandardMailBody({ shops: [{ shopMerchantName: companyName, shopSupplierId: supplierId }] });
+      const lines = [
+        "X-Unsent: 1",
+        "To: aswatsonstw@gmail.com; Kevinte@watsons.com.tw; JaneChang@watsons.com.tw",
+        "Date: " + new Date().toUTCString(),
+        "Subject: " + encodeSubject(subject),
+        "MIME-Version: 1.0",
+        'Content-Type: multipart/mixed; boundary="' + boundary + '"',
+        "",
+        "--" + boundary,
+        "Content-Type: text/plain; charset=UTF-8",
+        "Content-Transfer-Encoding: base64",
+        "",
+        foldBase64(utf8ToBase64(body)),
+        "--" + boundary,
+        'Content-Type: application/zip; name="' + zipFile.name + '"',
+        "Content-Transfer-Encoding: base64",
+        'Content-Disposition: attachment; filename="' + zipFile.name + '"',
+        "",
+        foldBase64(zipFile.base64),
+        "--" + boundary + "--",
+        ""
+      ];
+      return lines.join("\r\n");
+    }
+
+    // Multi-event robust live binding (input, change, blur, keyup, compositionend)
+    const saveEvents = ["input", "change", "blur", "keyup", "compositionend"];
+
+    saveEvents.forEach((evt) => {
+      form.addEventListener(evt, (e) => {
+        applyZip();
+        updateCounters();
+        updateUrlPreview();
+        updateProgress();
+        syncSupplierId();
+        const name = e.target && e.target.name;
+        if (name === "shopBadgeFreeDeliveryThreshold" || name === "shopBadgeFastestDeliveryDay") {
+          syncLinkedDelivery("f001");
+          renderDeliveryStatus();
+        }
+        renderRecords();
+      });
+
+      deliveryForm.addEventListener(evt, (e) => {
+        const del = readDelivery();
+        if (form.elements.shopBadgeFreeDeliveryThreshold) {
+          form.elements.shopBadgeFreeDeliveryThreshold.value = del.shopFreeDeliveryThreshold || "";
+        }
+        if (form.elements.shopBadgeFastestDeliveryDay) {
+          form.elements.shopBadgeFastestDeliveryDay.value = del.shopEstimatedDeliveryStartTime || "";
+        }
+        renderDeliveryStatus();
+        updateProgress();
+        renderRecords();
+      });
+
+      accountForm.addEventListener(evt, (e) => {
+        if (e.target && e.target.closest) {
+          const wrap = e.target.closest(".field-wrapper");
+          if (wrap) wrap.classList.remove("has-error");
+        }
+        updateProgress();
+      });
+    });
+
+    // Manual Save Draft Button Handler
+    const manualSaveDraftBtn = document.getElementById("manualSaveDraftBtn");
+    if (manualSaveDraftBtn) {
+      manualSaveDraftBtn.addEventListener("click", () => {
+        saveDraftManually(true);
+      });
+    }
+
+    // Export Draft JSON Button Handler
+    const exportDraftJsonBtn = document.getElementById("exportDraftJsonBtn");
+    if (exportDraftJsonBtn) {
+      exportDraftJsonBtn.addEventListener("click", exportDraftJson);
+    }
+
+    // Import Draft JSON Button Handler
+    const importDraftJsonBtn = document.getElementById("importDraftJsonBtn");
+    const importDraftJsonInput = document.getElementById("importDraftJsonInput");
+    if (importDraftJsonBtn && importDraftJsonInput) {
+      importDraftJsonBtn.addEventListener("click", () => {
+        importDraftJsonInput.value = "";
+        importDraftJsonInput.click();
+      });
+      importDraftJsonInput.addEventListener("change", (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (file) importDraftJson(file);
+      });
+    }
+
+    // Clear Drafts Button Handler
+    const clearAllDraftBtn = document.getElementById("clearAllDraftBtn");
+    if (clearAllDraftBtn) {
+      clearAllDraftBtn.addEventListener("click", () => {
+        if (confirm("⚠️ 確定要清空所有已填寫的資料與暫存紀錄，重新開始填寫嗎？")) {
+          clearAllDrafts();
+        }
+      });
+    }
+
+    accountForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const data = readAccount();
+      const isBlank = !data.email && !data.lastName_en && !data.firstName_en;
+      if (accountEditingIndex == null && isBlank && accountRecords.length > 0) {
+        accountForm.querySelectorAll(".field-wrapper.has-error").forEach(function (el) { el.classList.remove("has-error"); });
+        showToast("✓ 您已成功建立 " + accountRecords.length + " 組主要帳戶，已達標可直接匯出！若需新增下一組請先填寫上方資料。", "info");
+        return;
+      }
+      if (validateAccount(data).length) return;
+      if (accountEditingIndex == null) {
+        accountRecords.push(data);
+        showToast("✓ 已成功加入帳戶清單！", "success");
+      } else {
+        accountRecords[accountEditingIndex] = data;
+        showToast("✓ 已成功更新帳戶資料！", "success");
+      }
+      accountEditingIndex = null;
+      fillAccount(accountDefaults());
+      accountForm.querySelectorAll(".field-wrapper.has-error").forEach(function (el) { el.classList.remove("has-error"); });
+      setAccountEditingUi();
+      refresh();
+    });
+
+    document.getElementById("accountResetBtn").addEventListener("click", function () {
+      const wasEditing = accountEditingIndex != null;
+      accountEditingIndex = null;
+      fillAccount(accountDefaults());
+      accountForm.querySelectorAll(".field-wrapper.has-error").forEach(function (el) { el.classList.remove("has-error"); });
+      setAccountEditingUi();
+      persist();
+      showToast(wasEditing ? "已切換為新增模式，可填寫另一組帳戶" : "已清空帳戶填寫欄位", "info");
+    });
+
+    accountTable.addEventListener("click", function (e) {
+      const edit = e.target.getAttribute("data-acc-edit");
+      const del = e.target.getAttribute("data-acc-del");
+      if (edit != null) {
+        accountEditingIndex = Number(edit);
+        fillAccount(accountRecords[accountEditingIndex]);
+        setAccountEditingUi();
+        accountForm.scrollIntoView({ behavior: "smooth", block: "start" });
+        showToast("正在編輯第 " + (accountEditingIndex + 1) + " 組帳戶", "info");
+      }
+      if (del != null) {
+        const i = Number(del);
+        accountRecords.splice(i, 1);
+        if (accountEditingIndex === i) {
+          accountEditingIndex = null;
+          fillAccount(accountDefaults());
+        } else if (accountEditingIndex != null && accountEditingIndex > i) {
+          accountEditingIndex -= 1;
+        }
+        setAccountEditingUi();
+        refresh();
+        showToast("已刪除該筆帳戶", "info");
+      }
+    });
+
+    // Copy buttons
+    document.getElementById("copyUrlBtn").addEventListener("click", function () {
+      const text = urlPreview.textContent;
+      navigator.clipboard.writeText(text).then(() => showToast("已複製店舖網址！", "success"));
+    });
+
+    document.getElementById("copyMailBtn").addEventListener("click", function () {
+      navigator.clipboard.writeText(MAIL_TO).then(() => showToast("已複製屈臣氏收件信箱！", "success"));
+    });
+
+    // Download All Excel files as Zip
+    document.getElementById("downloadAllBtn").addEventListener("click", () => {
+      const pack = collectThreeFiles();
+      if (!pack) return;
+      downloadBinaryFile(pack.zipFile);
+      showToast("已開始下載 3 份 Excel 打包壓縮檔 (" + pack.zipFile.name + ")！", "success");
+    });
+
+    // Download EML
+    document.getElementById("emailBtn").addEventListener("click", () => {
+      const pack = collectThreeFiles();
+      if (!pack) return;
+      downloadTextFile({
+        name: pack.emlName,
+        content: pack.eml,
+        type: "message/rfc822"
+      });
+      showToast("已產生 Outlook 郵件草稿檔 (.eml)！若瀏覽器跳出提示請點選「保留」即可開啟", "success");
+    });
+
+    // Modal Lightbox
+    const sampleModal = document.getElementById("sampleModal");
+    const toggleSample = document.getElementById("toggleSampleImg");
+    const sampleThumb = document.getElementById("sampleThumbImg");
+    const closeModal = document.getElementById("closeModalBtn");
+
+    function openModal() { sampleModal.classList.add("open"); }
+    function hideModal() { sampleModal.classList.remove("open"); }
+
+    if (toggleSample) toggleSample.addEventListener("click", openModal);
+    if (sampleThumb) sampleThumb.addEventListener("click", openModal);
+    if (closeModal) closeModal.addEventListener("click", hideModal);
+    sampleModal.addEventListener("click", (e) => {
+      if (e.target === sampleModal) hideModal();
+    });
+
+    // Accurate ScrollSpy for Step Navigation
+    function updateScrollSpy() {
+      const f001El = document.getElementById("f001");
+      const f002El = document.getElementById("f002");
+      const f003El = document.getElementById("f003");
+      const finalEl = document.getElementById("final-step");
+      if (!f001El || !f002El || !f003El || !finalEl) return;
+
+      const scrollY = window.scrollY;
+      const f002Top = f002El.getBoundingClientRect().top + scrollY;
+      const f003Top = f003El.getBoundingClientRect().top + scrollY;
+
+      // 檢查是否接近頁面底部
+      const isBottom = (window.innerHeight + scrollY) >= (document.documentElement.scrollHeight - 90);
+      const triggerY = scrollY + 180;
+
+      let current = "f001";
+      if (isBottom) {
+        current = "final-step";
+      } else if (triggerY >= f003Top) {
+        current = "f003";
+      } else if (triggerY >= f002Top) {
+        current = "f002";
+      } else {
+        current = "f001";
+      }
+
+      Object.keys(navItems).forEach((id) => {
+        if (navItems[id]) {
+          navItems[id].classList.toggle("active", id === current);
+        }
+      });
+    }
+
+    window.addEventListener("scroll", updateScrollSpy, { passive: true });
+
+    // Smooth scroll and active sync on step click
+    document.querySelectorAll(".step-nav-item").forEach((item) => {
+      item.addEventListener("click", (e) => {
+        const href = item.getAttribute("href");
+        if (href && href.startsWith("#")) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            const id = href.replace("#", "");
+            Object.keys(navItems).forEach((k) => {
+              if (navItems[k]) navItems[k].classList.toggle("active", k === id);
+            });
+            setTimeout(updateScrollSpy, 450);
+          }
+        }
+      });
+    });
+
+    // Initial load
+    populateCities();
+    populateDistricts("");
+    const restoredOk = restore();
+    syncSupplierId();
+    updateCounters();
+    updateUrlPreview();
+    updateProgress();
+    renderRecords();
+    renderAccounts();
+    renderDeliveryStatus();
+    updateScrollSpy();
+
+    if (restoredOk && restoredOk.ok) {
+      setTimeout(() => {
+        const msg = restoredOk.timeStr ? ("✓ 已為您載入上次暫存的草稿資料（暫存時間 " + restoredOk.timeStr + "）") : "✓ 已為您載入上次暫存的草稿資料";
+        showToast(msg, "success");
+      }, 300);
+    }
+  </script>
+</body>
+</html>
