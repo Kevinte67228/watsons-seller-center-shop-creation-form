@@ -1918,9 +1918,19 @@
                     <label class="field-label">顯示品牌編號 (Brand IDs) <span class="field-opt">選填</span></label>
                     <span class="field-key">shopDisplayBrandIds</span>
                   </div>
-                  <input class="input-control" name="shopDisplayBrandIds" placeholder="例如 101111|123411" />
+                  
+                  <div style="position: relative;">
+                    <input type="text" class="input-control" id="brandSearchInput" autocomplete="off" placeholder="輸入品牌名稱或代碼搜尋並點擊加入..." />
+                    <div id="brandDropdown" style="display:none; position:absolute; top:100%; left:0; right:0; max-height:200px; overflow-y:auto; background:#fff; border:1px solid #d1d5db; z-index:100; border-radius:4px; box-shadow:0 4px 6px rgba(0,0,0,0.1); margin-top:4px;"></div>
+                  </div>
+                  
+                  <div id="selectedBrandsContainer" style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;"></div>
+                  
+                  <!-- Hidden input to store only IDs separated by | for the actual form submission/export -->
+                  <input type="hidden" name="shopDisplayBrandIds" id="realShopDisplayBrandIds" />
+
                   <div class="field-footer">
-                    <span class="field-hint">多組品牌編號請以直線「|」分隔。若未填寫則不顯示專屬品牌區塊。</span>
+                    <span class="field-hint">支援輸入品牌英文名動態搜尋，加入後將以「|」分隔。匯出時將自動轉換為純數字代碼。若未填寫則不顯示專屬品牌區塊。</span>
                   </div>
                   <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
                 </div>
@@ -4115,6 +4125,109 @@
         const msg = restoredOk.timeStr ? ("✓ 已為您載入上次暫存的草稿資料（暫存時間 " + restoredOk.timeStr + "）") : "✓ 已為您載入上次暫存的草稿資料";
         showToast(msg, "success");
       }, 300);
+    }
+  </script>
+  <script src="brands-data.js"></script>
+  <script>
+    // Brand Search Logic
+    const brandSearchInput = document.getElementById('brandSearchInput');
+    const brandDropdown = document.getElementById('brandDropdown');
+    const selectedBrandsContainer = document.getElementById('selectedBrandsContainer');
+    const realShopDisplayBrandIds = document.getElementById('realShopDisplayBrandIds');
+
+    let selectedBrands = [];
+
+    function updateBrandUI() {
+      // Update visual tags
+      selectedBrandsContainer.innerHTML = '';
+      selectedBrands.forEach((brand, index) => {
+        const tag = document.createElement('div');
+        tag.style.cssText = 'background:var(--brand-primary); color:#fff; padding:4px 10px; border-radius:16px; font-size:13px; display:flex; align-items:center; gap:6px;';
+        tag.innerHTML = `
+          <span>${brand.name} (${brand.id})</span>
+          <span style="cursor:pointer; font-weight:bold; font-size:14px; line-height:1;" onclick="removeBrand(${index})">&times;</span>
+        `;
+        selectedBrandsContainer.appendChild(tag);
+      });
+
+      // Update hidden input for export (IDs only)
+      realShopDisplayBrandIds.value = selectedBrands.map(b => b.id).join('|');
+      
+      // Also sync it visually in the input box if required, but tags are better.
+      // If the user wants the exact text "Brand Name+Brand ID | ..." to be visible somewhere, the tags represent that!
+    }
+
+    window.removeBrand = function(index) {
+      selectedBrands.splice(index, 1);
+      updateBrandUI();
+    };
+
+    if (brandSearchInput) {
+      brandSearchInput.addEventListener('input', (e) => {
+        const keyword = e.target.value.toLowerCase().trim();
+        if (!keyword) {
+          brandDropdown.style.display = 'none';
+          return;
+        }
+
+        // Search BRANDS_DATA
+        if (typeof BRANDS_DATA === 'undefined') return;
+        const matches = BRANDS_DATA.filter(b => b.name.toLowerCase().includes(keyword) || b.id.includes(keyword)).slice(0, 50); // limit to 50
+
+        if (matches.length > 0) {
+          brandDropdown.innerHTML = '';
+          matches.forEach(b => {
+            const item = document.createElement('div');
+            item.style.cssText = 'padding:8px 12px; cursor:pointer; font-size:14px; border-bottom:1px solid #f3f4f6; color:var(--text-primary);';
+            item.innerHTML = `<strong>${b.name}</strong> <span style="color:#6b7280; font-size:12px;">(${b.id})</span>`;
+            item.addEventListener('mouseenter', () => item.style.backgroundColor = '#f9fafb');
+            item.addEventListener('mouseleave', () => item.style.backgroundColor = 'transparent');
+            item.addEventListener('click', () => {
+              // Add to selected
+              if (!selectedBrands.find(sel => sel.id === b.id)) {
+                selectedBrands.push(b);
+                updateBrandUI();
+              }
+              brandSearchInput.value = '';
+              brandDropdown.style.display = 'none';
+            });
+            brandDropdown.appendChild(item);
+          });
+          brandDropdown.style.display = 'block';
+        } else {
+          brandDropdown.innerHTML = '<div style="padding:8px 12px; color:#9ca3af; font-size:13px;">找不到符合的品牌</div>';
+          brandDropdown.style.display = 'block';
+        }
+      });
+
+      // Hide dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!brandSearchInput.contains(e.target) && !brandDropdown.contains(e.target)) {
+          brandDropdown.style.display = 'none';
+        }
+      });
+    }
+
+    // Hook into fillForm to restore brands visually from the IDs
+    const originalFillForm = window.fillForm;
+    if (originalFillForm) {
+      window.fillForm = function(data) {
+        originalFillForm(data);
+        if (data.shopDisplayBrandIds && typeof BRANDS_DATA !== 'undefined') {
+          const ids = data.shopDisplayBrandIds.split('|');
+          selectedBrands = [];
+          ids.forEach(id => {
+            const found = BRANDS_DATA.find(b => b.id === id);
+            if (found) {
+              selectedBrands.push(found);
+            } else if (id.trim()) {
+              // If not found in data but exists, add as unknown
+              selectedBrands.push({ name: "Unknown", id: id.trim() });
+            }
+          });
+          updateBrandUI();
+        }
+      };
     }
   </script>
 </body>
