@@ -4163,25 +4163,88 @@
     };
 
     if (brandSearchInput) {
+      let activeIndex = -1;
+      let currentMatches = [];
+
+      function setActiveItem(items, index) {
+        if (!items || items.length === 0) return;
+        
+        // Remove active class from all
+        for (let i = 0; i < items.length; i++) {
+          items[i].style.backgroundColor = 'transparent';
+          items[i].style.borderLeft = '4px solid transparent';
+        }
+        
+        // Wrap around
+        if (index >= items.length) activeIndex = 0;
+        if (index < 0) activeIndex = items.length - 1;
+        
+        // Add active class
+        items[activeIndex].style.backgroundColor = '#e0f4f5'; // Light brand teal
+        items[activeIndex].style.borderLeft = '4px solid var(--brand-primary)';
+        
+        // Scroll into view
+        items[activeIndex].scrollIntoView({ block: 'nearest' });
+      }
+
+      brandSearchInput.addEventListener('keydown', (e) => {
+        const items = brandDropdown.querySelectorAll('.brand-item');
+        if (brandDropdown.style.display === 'block' && items.length > 0) {
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            activeIndex++;
+            setActiveItem(items, activeIndex);
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            activeIndex--;
+            setActiveItem(items, activeIndex);
+          } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (activeIndex >= 0 && activeIndex < items.length) {
+              items[activeIndex].click();
+            }
+          }
+        } else if (e.key === 'Enter') {
+          e.preventDefault(); // Prevent form submission if they just hit enter in the input
+        }
+      });
+
       brandSearchInput.addEventListener('input', (e) => {
+        activeIndex = -1;
         const keyword = e.target.value.toLowerCase().trim();
         if (!keyword) {
           brandDropdown.style.display = 'none';
+          currentMatches = [];
           return;
         }
 
         // Search BRANDS_DATA
         if (typeof BRANDS_DATA === 'undefined') return;
-        const matches = BRANDS_DATA.filter(b => b.name.toLowerCase().includes(keyword) || b.id.includes(keyword)).slice(0, 50); // limit to 50
+        currentMatches = BRANDS_DATA.filter(b => b.name.toLowerCase().includes(keyword) || b.id.includes(keyword)).slice(0, 50); // limit to 50
 
-        if (matches.length > 0) {
+        if (currentMatches.length > 0) {
           brandDropdown.innerHTML = '';
-          matches.forEach(b => {
+          currentMatches.forEach(b => {
             const item = document.createElement('div');
-            item.style.cssText = 'padding:8px 12px; cursor:pointer; font-size:14px; border-bottom:1px solid #f3f4f6; color:var(--text-primary);';
+            item.className = 'brand-item';
+            item.style.cssText = 'padding:8px 12px; cursor:pointer; font-size:14px; border-bottom:1px solid #f3f4f6; color:var(--text-primary); border-left:4px solid transparent; transition: all 0.1s ease;';
             item.innerHTML = `<strong>${b.name}</strong> <span style="color:#6b7280; font-size:12px;">(${b.id})</span>`;
-            item.addEventListener('mouseenter', () => item.style.backgroundColor = '#f9fafb');
-            item.addEventListener('mouseleave', () => item.style.backgroundColor = 'transparent');
+            
+            item.addEventListener('mouseenter', () => {
+              const allItems = brandDropdown.querySelectorAll('.brand-item');
+              for(let i=0; i<allItems.length; i++) {
+                allItems[i].style.backgroundColor = 'transparent';
+                allItems[i].style.borderLeft = '4px solid transparent';
+              }
+              item.style.backgroundColor = '#e0f4f5';
+              item.style.borderLeft = '4px solid var(--brand-primary)';
+              activeIndex = Array.from(allItems).indexOf(item);
+            });
+            item.addEventListener('mouseleave', () => {
+              item.style.backgroundColor = 'transparent';
+              item.style.borderLeft = '4px solid transparent';
+            });
+            
             item.addEventListener('click', () => {
               // Add to selected
               if (!selectedBrands.find(sel => sel.id === b.id)) {
@@ -4190,6 +4253,7 @@
               }
               brandSearchInput.value = '';
               brandDropdown.style.display = 'none';
+              activeIndex = -1;
             });
             brandDropdown.appendChild(item);
           });
@@ -4204,6 +4268,7 @@
       document.addEventListener('click', (e) => {
         if (!brandSearchInput.contains(e.target) && !brandDropdown.contains(e.target)) {
           brandDropdown.style.display = 'none';
+          activeIndex = -1;
         }
       });
     }
