@@ -652,6 +652,63 @@
       white-space: nowrap;
     }
 
+    .field-lock-tag {
+      font-size: 11px;
+      padding: 0 4px;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: help;
+      background: #fef3c7;
+      border: 1px solid #fde68a;
+      line-height: 1.4;
+      vertical-align: middle;
+      transition: all 0.15s ease;
+    }
+
+    .field-lock-tag:hover {
+      background: #fde047;
+      border-color: #eab308;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .lock-policy-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-left: 4px solid #f59e0b;
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      margin-bottom: 20px;
+    }
+
+    .lock-policy-icon {
+      font-size: 20px;
+      line-height: 1.2;
+      flex-shrink: 0;
+    }
+
+    .lock-policy-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .lock-policy-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #92400e;
+    }
+
+    .lock-policy-desc {
+      font-size: 12.5px;
+      color: #78350f;
+      line-height: 1.55;
+    }
+
     textarea.input-control {
       min-height: 85px;
       resize: vertical;
@@ -1771,6 +1828,17 @@
         </div>
 
         <div class="card-body">
+          <!-- 鎖定欄位提醒 Banner -->
+          <div class="lock-policy-banner">
+            <div class="lock-policy-icon">🔒</div>
+            <div class="lock-policy-content">
+              <div class="lock-policy-title">重要填寫提醒：標有「🔒」之欄位</div>
+              <div class="lock-policy-desc">
+                送出後系統將鎖定資料，無法由供應商端於 Seller Center 後台直接編輯。如需修正，請另行提交修改申請，審核與調整作業約需 5 至 7 個工作天。
+              </div>
+            </div>
+          </div>
+
           <form id="shopForm" novalidate>
 
             <!-- 1. 店舖識別 -->
@@ -1793,7 +1861,7 @@
 
                 <div class="field-wrapper" data-field="shopSupplierId">
                   <div class="field-header">
-                    <label class="field-label">廠編 (Supplier ID)<span class="field-req">*</span></label>
+                    <label class="field-label">廠編 (Supplier ID)<span class="field-req">*</span> <span class="field-lock-tag" title="送出後系統將鎖定資料，無法由供應商端於 Seller Center 後台直接編輯。如需修正，請另行提交修改申請，審核與調整作業約需 5 至 7 個工作天。">🔒</span></label>
                     <span class="field-key">shopSupplierId</span>
                   </div>
                   <input class="input-control" name="shopSupplierId" inputmode="numeric" autocomplete="off" placeholder="例如 1234567800" />
@@ -1805,7 +1873,7 @@
 
                 <div class="field-wrapper col-span-2" data-field="shopMerchantName">
                   <div class="field-header">
-                    <label class="field-label">公司名稱 (商家內部名稱)<span class="field-req">*</span></label>
+                    <label class="field-label">公司名稱 (商家內部名稱)<span class="field-req">*</span> <span class="field-lock-tag" title="送出後系統將鎖定資料，無法由供應商端於 Seller Center 後台直接編輯。如需修正，請另行提交修改申請，審核與調整作業約需 5 至 7 個工作天。">🔒</span></label>
                     <span class="field-key">shopMerchantName</span>
                   </div>
                   <input class="input-control" name="shopMerchantName" placeholder="例如 鴻福堂集團控股有限公司" />
@@ -1817,7 +1885,7 @@
 
                 <div class="field-wrapper col-span-2" data-field="shopCodeForURL">
                   <div class="field-header">
-                    <label class="field-label">店舖網址代碼<span class="field-req">*</span></label>
+                    <label class="field-label">店舖網址代碼<span class="field-req">*</span> <span class="field-lock-tag" title="送出後系統將鎖定資料，無法由供應商端於 Seller Center 後台直接編輯。如需修正，請另行提交修改申請，審核與調整作業約需 5 至 7 個工作天。">🔒</span></label>
                     <span class="field-key">shopCodeForURL</span>
                   </div>
                   <div class="input-addon-wrap">
@@ -1915,7 +1983,7 @@
               <div class="form-grid">
                 <div class="field-wrapper col-span-2" data-field="shopDisplayBrandIds">
                   <div class="field-header">
-                    <label class="field-label">顯示品牌編號 (Brand IDs) <span class="field-opt">選填</span></label>
+                    <label class="field-label">顯示品牌編號 (Brand IDs) <span class="field-opt">選填</span> <span class="field-lock-tag" title="送出後系統將鎖定資料，無法由供應商端於 Seller Center 後台直接編輯。如需修正，請另行提交修改申請，審核與調整作業約需 5 至 7 個工作天。">🔒</span></label>
                     <span class="field-key">shopDisplayBrandIds</span>
                   </div>
                   
@@ -1950,7 +2018,7 @@
               <div class="form-grid">
                 <div class="field-wrapper" data-field="contactPersonName">
                   <div class="field-header">
-                    <label class="field-label">聯絡人姓名<span class="field-req">*</span></label>
+                    <label class="field-label">聯絡人姓名<span class="field-req">*</span> <span class="field-lock-tag" title="送出後系統將鎖定資料，無法由供應商端於 Seller Center 後台直接編輯。如需修正，請另行提交修改申請，審核與調整作業約需 5 至 7 個工作天。">🔒</span></label>
                     <span class="field-key">contactPersonName</span>
                   </div>
                   <input class="input-control" name="contactPersonName" placeholder="例如 陳大文" />
@@ -1959,7 +2027,7 @@
 
                 <div class="field-wrapper" data-field="contactPersonEmail">
                   <div class="field-header">
-                    <label class="field-label">聯絡人電子郵件<span class="field-req">*</span></label>
+                    <label class="field-label">聯絡人電子郵件<span class="field-req">*</span> <span class="field-lock-tag" title="送出後系統將鎖定資料，無法由供應商端於 Seller Center 後台直接編輯。如需修正，請另行提交修改申請，審核與調整作業約需 5 至 7 個工作天。">🔒</span></label>
                     <span class="field-key">contactPersonEmail</span>
                   </div>
                   <input class="input-control" name="contactPersonEmail" type="email" placeholder="例如 contact@example.com" />
@@ -1968,7 +2036,7 @@
 
                 <div class="field-wrapper" data-field="contactPersonPhoneCountryCode">
                   <div class="field-header">
-                    <label class="field-label">國碼<span class="field-req">*</span></label>
+                    <label class="field-label">國碼<span class="field-req">*</span> <span class="field-lock-tag" title="送出後系統將鎖定資料，無法由供應商端於 Seller Center 後台直接編輯。如需修正，請另行提交修改申請，審核與調整作業約需 5 至 7 個工作天。">🔒</span></label>
                     <span class="field-key">phoneCountryCode</span>
                   </div>
                   <div class="input-addon-wrap">
@@ -1980,7 +2048,7 @@
 
                 <div class="field-wrapper" data-field="contactPersonPhone">
                   <div class="field-header">
-                    <label class="field-label">聯絡電話<span class="field-req">*</span></label>
+                    <label class="field-label">聯絡電話<span class="field-req">*</span> <span class="field-lock-tag" title="送出後系統將鎖定資料，無法由供應商端於 Seller Center 後台直接編輯。如需修正，請另行提交修改申請，審核與調整作業約需 5 至 7 個工作天。">🔒</span></label>
                     <span class="field-key">contactPersonPhone</span>
                   </div>
                   <input class="input-control" name="contactPersonPhone" inputmode="numeric" placeholder="例如 955555000" />
@@ -1989,7 +2057,7 @@
 
                 <div class="field-wrapper" data-field="contactPersonPhoneExt">
                   <div class="field-header">
-                    <label class="field-label">分機 <span class="field-opt">選填</span></label>
+                    <label class="field-label">分機 <span class="field-opt">選填</span> <span class="field-lock-tag" title="送出後系統將鎖定資料，無法由供應商端於 Seller Center 後台直接編輯。如需修正，請另行提交修改申請，審核與調整作業約需 5 至 7 個工作天。">🔒</span></label>
                     <span class="field-key">phoneExt</span>
                   </div>
                   <input class="input-control" name="contactPersonPhoneExt" inputmode="numeric" placeholder="例如 123" />
@@ -2001,7 +2069,7 @@
 
                 <div class="field-wrapper" data-field="contactPersonFax">
                   <div class="field-header">
-                    <label class="field-label">傳真號碼 <span class="field-opt">選填</span></label>
+                    <label class="field-label">傳真號碼 <span class="field-opt">選填</span> <span class="field-lock-tag" title="送出後系統將鎖定資料，無法由供應商端於 Seller Center 後台直接編輯。如需修正，請另行提交修改申請，審核與調整作業約需 5 至 7 個工作天。">🔒</span></label>
                     <span class="field-key">fax</span>
                   </div>
                   <input class="input-control" name="contactPersonFax" inputmode="numeric" placeholder="選填" />
@@ -2010,7 +2078,7 @@
 
                 <div class="field-wrapper" data-field="contactPersonCity">
                   <div class="field-header">
-                    <label class="field-label">城市 / 縣市<span class="field-req">*</span></label>
+                    <label class="field-label">城市 / 縣市<span class="field-req">*</span> <span class="field-lock-tag" title="送出後系統將鎖定資料，無法由供應商端於 Seller Center 後台直接編輯。如需修正，請另行提交修改申請，審核與調整作業約需 5 至 7 個工作天。">🔒</span></label>
                     <span class="field-key">city</span>
                   </div>
                   <select class="input-control" name="contactPersonCity">
@@ -2021,7 +2089,7 @@
 
                 <div class="field-wrapper" data-field="contactPersonState">
                   <div class="field-header">
-                    <label class="field-label">行政區 / 鄉鎮市區<span class="field-req">*</span></label>
+                    <label class="field-label">行政區 / 鄉鎮市區<span class="field-req">*</span> <span class="field-lock-tag" title="送出後系統將鎖定資料，無法由供應商端於 Seller Center 後台直接編輯。如需修正，請另行提交修改申請，審核與調整作業約需 5 至 7 個工作天。">🔒</span></label>
                     <span class="field-key">state</span>
                   </div>
                   <select class="input-control" name="contactPersonState">
@@ -2032,7 +2100,7 @@
 
                 <div class="field-wrapper col-span-2" data-field="contactPersonStreet">
                   <div class="field-header">
-                    <label class="field-label">街路門牌地址<span class="field-req">*</span></label>
+                    <label class="field-label">街路門牌地址<span class="field-req">*</span> <span class="field-lock-tag" title="送出後系統將鎖定資料，無法由供應商端於 Seller Center 後台直接編輯。如需修正，請另行提交修改申請，審核與調整作業約需 5 至 7 個工作天。">🔒</span></label>
                     <span class="field-key">street</span>
                   </div>
                   <input class="input-control" name="contactPersonStreet" placeholder="例如 八德路四段760號11樓" />
@@ -2042,7 +2110,18 @@
                   <div class="field-error-msg"><span>⚠️</span><span class="err-text"></span></div>
                 </div>
 
-                <div class="field-wrapper col-span-2" data-field="zipCode">
+                <div class="field-wrapper" data-field="contactPersonCountry">
+                  <div class="field-header">
+                    <label class="field-label">聯絡人國家</label>
+                    <span class="field-readonly-tag">預設值不需要填寫</span>
+                  </div>
+                  <input class="input-control" name="contactPersonCountry" value="台灣" readonly />
+                  <div class="field-footer">
+                    <span class="field-hint">※ 預設值不需要填寫（固定為「台灣」）</span>
+                  </div>
+                </div>
+
+                <div class="field-wrapper" data-field="zipCode">
                   <div class="field-header">
                     <label class="field-label">
                       郵遞區號 (自動帶入 6 碼)
